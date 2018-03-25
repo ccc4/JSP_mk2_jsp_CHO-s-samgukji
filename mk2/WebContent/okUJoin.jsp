@@ -7,14 +7,14 @@
 %>
 <script type="text/javascript">
 	alert("회원가입이 성공적으로 완료되었습니다.");
-	location.href = "login.jsp";
+	location.href = "uLogin.jsp";
 </script>
 <%
 	} else if (okUJoin == "0") {
 %>
 <script type="text/javascript">
 	alert("회원가입에 실패했습니다. 다시 시도해주세요.");
-	location.href = "login.jsp";
+	location.href = "uLogin.jsp";
 </script>
 <%
 	}

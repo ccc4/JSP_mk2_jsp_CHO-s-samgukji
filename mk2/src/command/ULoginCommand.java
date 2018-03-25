@@ -21,7 +21,6 @@ public class ULoginCommand implements Command {
 		if(result == 1) {
 			request.setAttribute("okULogin", "1");
 			request.getSession().setAttribute("id", id);
-			request.getSession().setAttribute("validUser", "Y");
 			UDto dto = dao.getUser(id);
 			request.getSession().setAttribute("getUser", dto);
 		} else if(result == 0) {

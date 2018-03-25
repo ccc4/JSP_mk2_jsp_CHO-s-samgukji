@@ -3,9 +3,12 @@ package dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Timestamp;
+import java.util.ArrayList;
 
 import javax.sql.DataSource;
 
+import dto.BDto;
 import dto.UDto;
 
 import javax.naming.Context;
@@ -183,6 +186,267 @@ public class Dao {
 			
 			if(check == 0) {
 				re = 0;				
+			} else {
+				re = 1;
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(pstmt != null) pstmt.close();
+				if(conn != null) conn.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		
+		return re;
+	}
+	
+//	°Ô½ÃÆÇ DAO
+	
+	public ArrayList<BDto> bList() {
+		
+		ArrayList<BDto> dtos = new ArrayList<BDto>();
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = datasource.getConnection();
+			String sql = "SELECT * FROM board ORDER BY bIDX DESC";
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				int bIDX = rs.getInt("bIDX");
+				String bID = rs.getString("bID");
+				String bNickname = rs.getString("bNickname");
+				String bTitle = rs.getString("bTitle");
+				Timestamp bDate = rs.getTimestamp("bDate");
+				int bHit = rs.getInt("bHit");
+				
+				BDto dto = new BDto(bIDX, bID, bNickname, bTitle, bDate, bHit);
+				dtos.add(dto);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(rs != null) rs.close();
+				if(pstmt != null) pstmt.close();
+				if(conn != null) conn.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		
+		return dtos;
+	}
+	
+	public int bWrite(String id, String nickname, String title, String content) {
+		
+		int re = 0;
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			conn = datasource.getConnection();
+			String sql = "INSERT INTO board (bID, bNickname, bTitle, bContent) VALUES (?, ?, ?, ?)";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			pstmt.setString(2, nickname);
+			pstmt.setString(3, title);
+			pstmt.setString(4, content);
+			int check = pstmt.executeUpdate();
+			
+			if(check == 0) {
+				re = 0;
+			} else {
+				re = 1;
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(pstmt != null) pstmt.close();
+				if(conn != null) conn.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		
+		return re;
+	}
+	
+	public BDto bContentView(String idx) {
+		
+		upHit(idx);
+		
+		BDto dto = null;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = datasource.getConnection();
+			String sql = "SELECT * FROM board WHERE bIDX = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, idx);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				int bIDX = rs.getInt("bIDX");
+				String bID = rs.getString("bID");
+				String bNickname = rs.getString("bNickname");
+				String bTitle = rs.getString("bTitle");
+				String bContent = rs.getString("bContent");
+				Timestamp bDate = rs.getTimestamp("bDate");
+				int bHit = rs.getInt("bHit");
+				
+				dto = new BDto(bIDX, bID, bNickname, bTitle, bContent, bDate, bHit);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(rs != null) rs.close();
+				if(pstmt != null) pstmt.close();
+				if(conn != null) conn.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		
+		return dto;
+	}
+	
+	private void upHit(String idx) {
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			conn = datasource.getConnection();
+			String sql = "UPDATE board SET bHit = bHit + 1 WHERE bIDX = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, idx);
+			int check = pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(pstmt != null) pstmt.close();
+				if(conn != null) conn.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		
+	}
+	
+	public BDto bContentModify(String idx) {
+		
+		BDto dto = null;
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = datasource.getConnection();
+			String sql = "SELECT * FROM board WHERE bIDX = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, idx);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				int bIDX = rs.getInt("bIDX");
+				String bID = rs.getString("bID");
+				String bNickname = rs.getString("bNickname");
+				String bTitle = rs.getString("bTitle");
+				String bContent = rs.getString("bContent");
+				Timestamp bDate = rs.getTimestamp("bDate");
+				int bHit = rs.getInt("bHit");
+				
+				dto = new BDto(bIDX, bID, bNickname, bTitle, bContent, bDate, bHit);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(rs != null) rs.close();
+				if(pstmt != null) pstmt.close();
+				if(conn != null) conn.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		
+		return dto;
+	}
+	
+	public int bModify(String idx, String id, String title, String content) {
+
+		int re = 0;
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			conn = datasource.getConnection();
+			String sql = "UPDATE board SET bTitle = ?, bContent = ? WHERE bIDX = ? AND bID = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, title);
+			pstmt.setString(2, content);
+			pstmt.setString(3, idx);
+			pstmt.setString(4, id);
+			int check = pstmt.executeUpdate();
+			
+			if(check == 0) {
+				re = 0;
+			} else {
+				re = 1;
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(pstmt != null) pstmt.close();
+				if(conn != null) conn.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		
+		return re;
+	}
+	
+	public int bDelete(String idx) {
+
+		int re = 0;
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			conn = datasource.getConnection();
+			String sql = "DELETE FROM board WHERE bIDX = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, idx);
+			int check = pstmt.executeUpdate();
+			
+			if(check == 0) {
+				re = 0;
 			} else {
 				re = 1;
 			}

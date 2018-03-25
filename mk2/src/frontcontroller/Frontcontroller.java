@@ -9,6 +9,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import command.BContentViewCommand;
+import command.BDeleteCommand;
+import command.BModifyCommand;
+import command.BModifyViewCommand;
+import command.BWriteCommand;
+import command.BoardCommand;
 import command.Command;
 
 import command.UJoinCommand;
@@ -58,11 +64,6 @@ public class Frontcontroller extends HttpServlet {
 		String conPath = request.getContextPath();
 		String com = uri.substring(conPath.length());
 		
-//		if(com.equals("/index.do")) {
-//			command = new MainCommand();
-//			command.execute(request, response);
-//			viewpage = "index.jsp";
-//		}
 		
 //		회원정보
 		
@@ -84,31 +85,36 @@ public class Frontcontroller extends HttpServlet {
 		
 //		게시판기능
 		
-//		else if(com.equals("/bWrite.do")) {
-//			command = new BWriteCommand();
-//			command.execute(request, response);
-//			viewpage = "okBWrite.jsp";
-//		}
-//		else if(com.equals("/bContent_view.do")) {
-//			command = new BContentViewCommand();
-//			command.execute(request, response);
-//			viewpage = "bContent_view.jsp";
-//		}
-//		else if(com.equals("/bModify_view.do")) {
-//			command = new BModifyViewCommand();
-//			command.execute(request, response);
-//			viewpage = "bModify_view.jsp";
-//		}
-//		else if(com.equals("/bModify.do")) {
-//			command = new BModifyCommand();
-//			command.execute(request, response);
-//			viewpage = "okBModify.jsp";
-//		}
-//		else if(com.equals("/bDelete.do")) {
-//			command = new BDeleteCommand();
-//			command.execute(request, response);
-//			viewpage = "okBDeleteDone.jsp";
-//		}
+		else if(com.equals("/board.do")) {
+			command = new BoardCommand();
+			command.execute(request, response);
+			viewpage = "board.jsp";
+		}
+		else if(com.equals("/bWrite.do")) {
+			command = new BWriteCommand();
+			command.execute(request, response);
+			viewpage = "okBWrite.jsp";
+		}
+		else if(com.equals("/bContent_view.do")) {
+			command = new BContentViewCommand();
+			command.execute(request, response);
+			viewpage = "bContent_view.jsp";
+		}
+		else if(com.equals("/bModify_view.do")) {
+			command = new BModifyViewCommand();
+			command.execute(request, response);
+			viewpage = "bModify_view.jsp";
+		}
+		else if(com.equals("/bModify.do")) {
+			command = new BModifyCommand();
+			command.execute(request, response);
+			viewpage = "okBModify.jsp";
+		}
+		else if(com.equals("/bDelete.do")) {
+			command = new BDeleteCommand();
+			command.execute(request, response);
+			viewpage = "okBDelete.jsp";
+		}
 		
 		
 		

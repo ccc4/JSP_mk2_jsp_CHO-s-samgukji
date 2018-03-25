@@ -7,21 +7,24 @@
 %>
 <script type="text/javascript">
 	alert("로그인에 성공했습니다.");
-	location.href = "index.jsp";
+	history.go(-2);
+	location.reload(); 
 </script>
 <%
 	} else if (okULogin == "0") {
 %>
 <script type="text/javascript">
 	alert("아이디 또는 비밀번호가 다릅니다.");
-	location.href = "login.jsp";
+	history.back();
+	location.reload(); 
 </script>
 <%
 	} else if (okULogin == "-1") {
 %>
 <script type="text/javascript">
 	alert("아이디가 존재하지 않습니다.");
-	location.href = "login.jsp";
+	history.back();
+	location.reload(); 
 </script>
 <%
 	}
