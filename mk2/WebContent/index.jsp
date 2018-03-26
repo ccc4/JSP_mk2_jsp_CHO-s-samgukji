@@ -59,7 +59,7 @@
 			<!-- 내비게이션 우측 로그인or회원가입 -->
 			<ul class="nav navbar-nav navbar-right">
 				<c:choose>
-					<c:when test="${sessionScope.getUser != null}">
+					<c:when test="${!empty sessionScope.getUser}">
 						<li><a disable>${getUser.userNickname }님 환영합니다.</a></li>
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">

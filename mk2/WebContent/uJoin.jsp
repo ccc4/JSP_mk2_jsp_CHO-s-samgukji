@@ -27,7 +27,7 @@
 %> --%>
 
 <c:choose>
-	<c:when test="${sessionScope.getUser != null }">
+	<c:when test="${!empty sessionScope.getUser }">
 		<script type="text/javascript">
 			location.href = "index.jsp";
 		</script>

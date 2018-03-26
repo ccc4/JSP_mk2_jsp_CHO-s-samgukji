@@ -14,8 +14,9 @@
 </head>
 <body>
 
+<c:set var="id" value="${sessionScope.id }"></c:set>
 <c:choose>
-	<c:when test="${sessionScope.id != null && sessionScope.id == param.bID }">
+	<c:when test="${!empty id && id == param.bID }">
 		<!-- 상단 내비게이션 시작 -->
 		<nav class="navbar navbar-default">
 		<div class="container">
@@ -126,7 +127,7 @@
 	</c:when>
 	<c:otherwise>
 		<script type="text/javascript">
-			alert("잘못된 접근 경로입니다sss.");
+			alert("잘못된 접근 경로입니다.");
 			location.href="index.jsp";
 		</script>
 	</c:otherwise>
