@@ -14,7 +14,7 @@
 </head>
 <body>
 
-<%
+<%-- <%
 	Object getUser = session.getAttribute("getUser");
 
 	if(getUser == null) {
@@ -25,7 +25,16 @@
 		</script>
 <%
 	}
-%>
+%> --%>
+
+<c:choose>
+	<c:when test="${empty sessionScope.getUser }">
+		<script type="text/javascript">
+			alert("잘못된 접근 경로입니다.");
+			location.href="index.jsp";
+		</script>
+	</c:when>
+</c:choose>
 
 	<!-- 상단 내비게이션 시작 -->
 	<nav class="navbar navbar-default">
@@ -42,9 +51,11 @@
 			</button>
 			<a class="navbar-brand" href="index.jsp">SYUMIBBOM</a>
 		</div>
+		<!-- 타이틀 및 줄였을 때 목록바 끝 -->
 
 		<!-- 내비게이션 메뉴 -->
 		<div id="navbar" class="collapse navbar-collapse">
+			<!-- 내비게이션 좌측 -->
 			<ul class="nav navbar-nav">
 				<li><a href="index.jsp">메인</a></li>
 				<li class="dropdown">
@@ -65,7 +76,7 @@
 					</a>
 				</li>
 			</ul>
-			
+			<!-- 내비게이션 좌측 끝 -->
 			
 			<!-- 내비게이션 우측 로그인or회원가입 -->
 			<ul class="nav navbar-nav navbar-right">
@@ -80,7 +91,9 @@
 					</ul>
 				</li>
 			</ul>
+			<!-- 내비게이션 우측 로그인or회원가입 끝 -->
 		</div>
+		<!-- 내비게이션 메뉴 끝 -->
 
 	</div>
 	</nav>

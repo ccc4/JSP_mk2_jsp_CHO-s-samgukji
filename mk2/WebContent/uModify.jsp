@@ -14,19 +14,16 @@
 </head>
 <body>
 
-<%
-	Object getUser = session.getAttribute("getUser");
-
-	if(getUser == null) {
-%>
+<c:choose>
+	<c:when test="${empty sessionScope.getUser }">
 		<script type="text/javascript">
 			alert("잘못된 접근 경로입니다.");
 			location.href="index.jsp";
 		</script>
-<%
-	}
-%>
-<!-- 상단 내비게이션 시작 -->
+	</c:when>
+</c:choose>
+
+	<!-- 상단 내비게이션 시작 -->
 	<nav class="navbar navbar-default">
 	<div class="container">
 
@@ -41,6 +38,7 @@
 			</button>
 			<a class="navbar-brand" href="index.jsp">SYUMIBBOM</a>
 		</div>
+		<!-- 타이틀 및 줄였을 때 목록바 끝 -->
 
 		<!-- 내비게이션 메뉴 -->
 		<div id="navbar" class="collapse navbar-collapse">
@@ -72,7 +70,8 @@
 				<li><a disable>${getUser.userNickname }님 환영합니다.</a></li>
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-					<sapn class="glyphicon glyphicon-user"></sapn></a>
+						<sapn class="glyphicon glyphicon-user"></sapn>
+					</a>
 					<ul class="dropdown-menu" role="menu">
 						<li><a href="uModify.jsp">회원정보수정</a></li>
 						<li class="divider"></li>

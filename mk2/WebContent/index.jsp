@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ko">
 <head>
@@ -32,6 +33,7 @@
 
 		<!-- 내비게이션 메뉴 -->
 		<div id="navbar" class="collapse navbar-collapse">
+			<!-- 내비게이션 좌측 메뉴 -->
 			<ul class="nav navbar-nav">
 				<li class="active"><a href="index.jsp">메인</a></li>
 				<li class="dropdown">
@@ -52,42 +54,38 @@
 					</a>
 				</li>
 			</ul>
-			
+			<!-- 내비게이션 좌측 메뉴 끝 -->
 			
 			<!-- 내비게이션 우측 로그인or회원가입 -->
 			<ul class="nav navbar-nav navbar-right">
-			<%
-				String id = (String) session.getAttribute("id");
-				Object getUser = session.getAttribute("getUser");
-				
-				if(getUser != null) {
-			%>
-				<li><a disable>${getUser.userNickname }님 환영합니다.</a></li>
-				<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-					<sapn class="glyphicon glyphicon-user"></sapn></a>
-					<ul class="dropdown-menu" role="menu">
-						<li><a href="uModify.jsp">회원정보수정</a></li>
-						<li class="divider"></li>
-						<li><a href="uLogout.jsp">로그아웃</a></li>
-					</ul>
-				</li>
-			<%
-				} else {
-			%>
-				<li><a disable>로그인하기&nbsp;<span class="glyphicon glyphicon-hand-right"></span></a></li>
-				<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-					<sapn class="glyphicon glyphicon-user"></sapn></a>
-					<ul class="dropdown-menu" role="menu">
-						<li><a href="uLogin.jsp">로그인</a></li>
-						<li class="divider"></li>
-						<li><a href="uJoin.jsp">회원가입</a></li>
-					</ul>
-				</li>
-			<%
-				}
-			%>
+				<c:choose>
+					<c:when test="${sessionScope.getUser != null}">
+						<li><a disable>${getUser.userNickname }님 환영합니다.</a></li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+								<sapn class="glyphicon glyphicon-user"></sapn>
+							</a>
+							<ul class="dropdown-menu" role="menu">
+								<li><a href="uModify.jsp">회원정보수정</a></li>
+								<li class="divider"></li>
+								<li><a href="uLogout.jsp">로그아웃</a></li>
+							</ul>
+						</li>
+					</c:when>
+					<c:otherwise>
+						<li><a disable>로그인하기&nbsp;<span class="glyphicon glyphicon-hand-right"></span></a></li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+								<sapn class="glyphicon glyphicon-user"></sapn>
+							</a>
+							<ul class="dropdown-menu" role="menu">
+								<li><a href="uLogin.jsp">로그인</a></li>
+								<li class="divider"></li>
+								<li><a href="uJoin.jsp">회원가입</a></li>
+							</ul>
+						</li>
+					</c:otherwise>	
+				</c:choose>
 			</ul>
 			<!-- 내비게이션 우측 로그인or회원가입 끝 -->
 		</div>
@@ -111,6 +109,7 @@
 				</p>
 			</div>
 		</div>
+		<!-- jumbotron End-->
 
 		<!-- Carousel -->
 		<div class="container" id="introduce">
@@ -187,7 +186,6 @@
 		<!-- Marketing-End -->
 	</div>
 	<!-- 본문 끝 -->
-
 
 
 	<footer class="footer">

@@ -5,17 +5,17 @@
 
 	if (okBWrite == "1") {
 %>
-<script type="text/javascript">
-	alert("게시글 작성이 성공적으로 완료되었습니다.");
-	location.href = "board.do";
-</script>
+		<script type="text/javascript">
+			alert("게시글 작성이 성공적으로 완료되었습니다.");
+			location.href = "board.do";
+		</script>
 <%
 	} else if (okBWrite == "0") {
 %>
-<script type="text/javascript">
-	alert("게시글 작성에 실패했습니다. 다시 시도해주세요.");
-	location.href = "board.do";
-</script>
+		<script type="text/javascript">
+			alert("게시글 작성에 실패했습니다. 다시 시도해주세요.");
+			location.href = "board.do";
+		</script>
 <%
 	}
 %>

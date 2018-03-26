@@ -5,17 +5,17 @@
 
 	if (okUModify == "1") {
 %>
-<script type="text/javascript">
-	alert("회원정보수정이 성공적으로 완료되었습니다.");
-	location.href = "index.jsp";
-</script>
+		<script type="text/javascript">
+			alert("회원정보수정이 성공적으로 완료되었습니다.");
+			location.href = "index.jsp";
+		</script>
 <%
 	} else if (okUModify == "0") {
 %>
-<script type="text/javascript">
-	alert("회원정보수정에 실패했습니다. 다시 시도해주세요.");
-	location.href = "index.jsp";
-</script>
+		<script type="text/javascript">
+			alert("회원정보수정에 실패했습니다. 다시 시도해주세요.");
+			location.href = "index.jsp";
+		</script>
 <%
 	}
 %>
