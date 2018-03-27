@@ -34,6 +34,15 @@ function joinConfirm() {
 		return false;
 	}
 	
+	for (i = 0; i < form.userID.value.length; i++) {
+        ch = form.userID.value.charAt(i)
+        if (!(ch >= '0' && ch <= '9') && !(ch >= 'a' && ch <= 'z') && !(ch >= 'A' && ch <= 'Z')) {
+            alert("아이디는 대소문자, 숫자만 입력가능합니다.")
+            form.userID.focus()
+            return false;
+        }
+    }
+	
 	if(!form.userPassword.value) {
 		alert("비밀번호를 입력해주세요.");
 		form.userPassword.focus();
