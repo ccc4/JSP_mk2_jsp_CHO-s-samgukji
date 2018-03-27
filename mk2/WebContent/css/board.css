@@ -1,0 +1,6 @@
+@charset "EUC-KR";
+.list{
+	width: 350;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;}

@@ -109,7 +109,7 @@
 					<input type="hidden" name="userNickname" value="${getUser.userNickname }">
 					<tr>
 						<td>제목</td>
-						<td><input type="text" name="bTitle" size="60" maxlength="46"></td>
+						<td><input type="text" name="bTitle" size="60" maxlength="255"></td>
 					</tr>
 					<tr>
 						<td>내용</td>

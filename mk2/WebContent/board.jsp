@@ -10,7 +10,7 @@
 <title>슈미뽐</title>
 
 <link href="css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" href="">
+<link rel="stylesheet" href="./css/board.css">
 </head>
 <body>
 
@@ -100,30 +100,30 @@
 	<div>
 		<!-- 게시판 -->
 		<div class="container">
-			<table width="900" cellpadding="0" cellspacing="0" border="1">
+			<table width="1000" align="center" cellpadding="5" cellspacing="2" border="1" style="table-layout:fixed; word-break:break-all;">
 				<tr>
-					<th>번호</th>
-					<th>제목</th>
-					<th>글쓴이</th>
-					<th>날짜</th>
-					<th>조회</th>
+					<th width="30">번호</th>
+					<th width="350">제목</th>
+					<th width="60">글쓴이</th>
+					<th width="100">날짜</th>
+					<th width="40">조회</th>
 				</tr>
 
 				<c:forEach items="${bList }" var="dto">
 				<tr>
-					<td>${dto.bIDX }</td>
-					<td><a href="bContent_view.do?bIDX=${dto.bIDX }">${dto.bTitle }</a></td>
-					<td>${dto.bNickname }</td>
-					<td>${dto.bDate }</td>
-					<td>${dto.bHit }</td>
+					<td width="30">${dto.bIDX }</td>
+					<td width="350" class="list"><a href="bContent_view.do?bIDX=${dto.bIDX }">${dto.bTitle }</a></td>
+					<td width="60">${dto.bNickname }</td>
+					<td width="100">${dto.bDate }</td>
+					<td width="40">${dto.bHit }</td>
 				</tr>
 				</c:forEach>
 
 				<tr>
-					<td colspan="5">paging 구현해야됨</td>
+					<td colspan="5" style="text-align: center">paging 구현해야됨</td>
 				</tr>
 				<tr>
-					<td colspan="5"><input type="button" value="글작성" onclick="location.href='bCheckWrite.jsp'"></td>
+					<td colspan="5" style="text-align: right;"><input type="button" value="글작성" onclick="location.href='bCheckWrite.jsp'"></td>
 				</tr>
 			</table>
 		</div>
