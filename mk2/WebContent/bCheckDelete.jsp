@@ -2,12 +2,12 @@
     pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<c:set var="id" value="${sessionScope.id }"></c:set>
+<c:set var="userIDX" value="${sessionScope.userIDX }"></c:set>
 <c:choose>
-	<c:when test="${!empty id && id == param.bID }">
+	<c:when test="${!empty userIDX && userIDX == param.bUserIDX }">
 		<script type="text/javascript">
 			if(confirm("정말 삭제하시겠습니까?")) {
-				location.href="bDelete.do?bID=${id}&bIDX=${param.bIDX}";
+				location.href="bDelete.do?bUserIDX=${param.bUserIDX}&bIDX=${param.bIDX}";
 			} else {
 				history.back();
 			}

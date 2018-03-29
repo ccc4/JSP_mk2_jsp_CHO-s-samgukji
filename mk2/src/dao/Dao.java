@@ -132,6 +132,7 @@ public class Dao {
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
+				int userIDX = rs.getInt("userIDX");
 				String userPassword = rs.getString("userPassword");
 				String userName = rs.getString("userName");
 				String userNickname = rs.getString("userNickname");
@@ -141,8 +142,9 @@ public class Dao {
 				String userEmail1 = rs.getString("userEmail1");
 				String userEmail2 = rs.getString("userEmail2");
 				String userAddress = rs.getString("userAddress");
+				Timestamp userDate = rs.getTimestamp("userDate");
 				
-				dto = new UDto(userPassword, userName, userNickname, userGender, userPhone1, userPhone2, userEmail1, userEmail2, userAddress);
+				dto = new UDto(userIDX, userPassword, userName, userNickname, userGender, userPhone1, userPhone2, userEmail1, userEmail2, userAddress, userDate);
 			}
 			
 		} catch (Exception e) {
@@ -222,13 +224,13 @@ public class Dao {
 			
 			while(rs.next()) {
 				int bIDX = rs.getInt("bIDX");
-				String bID = rs.getString("bID");
+				int bUserIDX = rs.getInt("bUserIDX");
 				String bNickname = rs.getString("bNickname");
 				String bTitle = rs.getString("bTitle");
 				Timestamp bDate = rs.getTimestamp("bDate");
 				int bHit = rs.getInt("bHit");
 				
-				BDto dto = new BDto(bIDX, bID, bNickname, bTitle, bDate, bHit);
+				BDto dto = new BDto(bIDX, bUserIDX, bNickname, bTitle, bDate, bHit);
 				dtos.add(dto);
 			}
 			
@@ -247,7 +249,7 @@ public class Dao {
 		return dtos;
 	}
 	
-	public int bWrite(String id, String nickname, String title, String content) {
+	public int bWrite(int userIDX, String nickname, String title, String content) {
 		
 		int re = 0;
 		
@@ -256,9 +258,9 @@ public class Dao {
 		
 		try {
 			conn = datasource.getConnection();
-			String sql = "INSERT INTO board (bID, bNickname, bTitle, bContent) VALUES (?, ?, ?, ?)";
+			String sql = "INSERT INTO board (bUserIDX, bNickname, bTitle, bContent) VALUES (?, ?, ?, ?)";
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, id);
+			pstmt.setInt(1, userIDX);;
 			pstmt.setString(2, nickname);
 			pstmt.setString(3, title);
 			pstmt.setString(4, content);
@@ -302,14 +304,14 @@ public class Dao {
 			
 			while(rs.next()) {
 				int bIDX = rs.getInt("bIDX");
-				String bID = rs.getString("bID");
+				int bUserIDX = rs.getInt("bUserIDX");
 				String bNickname = rs.getString("bNickname");
 				String bTitle = rs.getString("bTitle");
 				String bContent = rs.getString("bContent");
 				Timestamp bDate = rs.getTimestamp("bDate");
 				int bHit = rs.getInt("bHit");
 				
-				dto = new BDto(bIDX, bID, bNickname, bTitle, bContent, bDate, bHit);
+				dto = new BDto(bIDX, bUserIDX, bNickname, bTitle, bContent, bDate, bHit);
 			}
 			
 		} catch (Exception e) {
@@ -369,14 +371,14 @@ public class Dao {
 			
 			while(rs.next()) {
 				int bIDX = rs.getInt("bIDX");
-				String bID = rs.getString("bID");
+				int bUserIDX = rs.getInt("bUserIDX");
 				String bNickname = rs.getString("bNickname");
 				String bTitle = rs.getString("bTitle");
 				String bContent = rs.getString("bContent");
 				Timestamp bDate = rs.getTimestamp("bDate");
 				int bHit = rs.getInt("bHit");
 				
-				dto = new BDto(bIDX, bID, bNickname, bTitle, bContent, bDate, bHit);
+				dto = new BDto(bIDX, bUserIDX, bNickname, bTitle, bContent, bDate, bHit);
 			}
 			
 		} catch (Exception e) {
@@ -394,7 +396,7 @@ public class Dao {
 		return dto;
 	}
 	
-	public int bModify(String idx, String id, String title, String content) {
+	public int bModify(String idx, int userIDX, String title, String content) {
 
 		int re = 0;
 		
@@ -403,12 +405,12 @@ public class Dao {
 		
 		try {
 			conn = datasource.getConnection();
-			String sql = "UPDATE board SET bTitle = ?, bContent = ? WHERE bIDX = ? AND bID = ?";
+			String sql = "UPDATE board SET bTitle = ?, bContent = ? WHERE bIDX = ? AND bUserIDX = ?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, title);
 			pstmt.setString(2, content);
 			pstmt.setString(3, idx);
-			pstmt.setString(4, id);
+			pstmt.setInt(4, userIDX);
 			int check = pstmt.executeUpdate();
 			
 			if(check == 0) {
@@ -431,7 +433,7 @@ public class Dao {
 		return re;
 	}
 	
-	public int bDelete(String idx) {
+	public int bDelete(String idx, String userIDX) {
 
 		int re = 0;
 		
@@ -440,9 +442,10 @@ public class Dao {
 		
 		try {
 			conn = datasource.getConnection();
-			String sql = "DELETE FROM board WHERE bIDX = ?";
+			String sql = "DELETE FROM board WHERE bIDX = ? AND buserIDX = ?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, idx);
+			pstmt.setString(2, userIDX);
 			int check = pstmt.executeUpdate();
 			
 			if(check == 0) {

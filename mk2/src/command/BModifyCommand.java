@@ -11,12 +11,12 @@ public class BModifyCommand implements Command {
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		
 		String idx = request.getParameter("bIDX");
-		String id = request.getParameter("bID");
+		int userIDX = (int) request.getSession().getAttribute("userIDX");
 		String title = request.getParameter("bTitle");
 		String content = request.getParameter("bContent");
 
 		Dao dao = Dao.getInstance();
-		int result = dao.bModify(idx, id, title, content);
+		int result = dao.bModify(idx, userIDX, title, content);
 		System.out.println(result);
 		
 		if(result == 1) {

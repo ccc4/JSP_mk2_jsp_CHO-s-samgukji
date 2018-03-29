@@ -5,7 +5,7 @@ import java.sql.Timestamp;
 public class BDto {
 
 	int bIDX;
-	String bID;
+	int bUserIDX;
 	String bNickname;
 	String bTitle;
 	String bContent;
@@ -16,20 +16,20 @@ public class BDto {
 
 	}
 	
-public BDto(int bIDX, String bID, String bNickname, String bTitle, Timestamp bDate, int bHit) {
+public BDto(int bIDX, int bUserIDX, String bNickname, String bTitle, Timestamp bDate, int bHit) {
 		
 		this.bIDX = bIDX;
-		this.bID = bID;
+		this.bUserIDX = bUserIDX;
 		this.bNickname = bNickname;
 		this.bTitle = bTitle;
 		this.bDate = bDate;
 		this.bHit = bHit;
 	}
 	
-public BDto(int bIDX, String bID, String bNickname, String bTitle, String bContent, Timestamp bDate, int bHit) {
+public BDto(int bIDX, int bUserIDX, String bNickname, String bTitle, String bContent, Timestamp bDate, int bHit) {
 		
 		this.bIDX = bIDX;
-		this.bID = bID;
+		this.bUserIDX = bUserIDX;
 		this.bNickname = bNickname;
 		this.bTitle = bTitle;
 		this.bContent = bContent;
@@ -65,8 +65,8 @@ public BDto(int bIDX, String bID, String bNickname, String bTitle, String bConte
 		return bIDX;
 	}
 
-	public String getbID() {
-		return bID;
+	public int getbUserIDX() {
+		return bUserIDX;
 	}
 
 	public String getbNickname() {

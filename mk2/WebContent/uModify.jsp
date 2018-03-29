@@ -15,7 +15,7 @@
 <body>
 
 <c:choose>
-	<c:when test="${empty sessionScope.getUser }">
+	<c:when test="${empty sessionScope.userIDX }">
 		<script type="text/javascript">
 			alert("잘못된 접근 경로입니다.");
 			location.href="index.jsp";

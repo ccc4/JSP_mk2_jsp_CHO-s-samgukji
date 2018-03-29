@@ -1,7 +1,10 @@
 package dto;
 
+import java.sql.Timestamp;
+
 public class UDto {
 
+	int userIDX;
 	String userID;
 	String userPassword;
 	String userName;
@@ -12,13 +15,16 @@ public class UDto {
 	String userEmail1;
 	String userEmail2;
 	String userAddress;
+	Timestamp userDate;
 	
+
 	public UDto() {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public UDto(String userPassword, String userName, String userNickname, int userGender, int userPhone1, int userPhone2, String userEmail1, String userEmail2, String userAddress) {
+	public UDto(int userIDX, String userPassword, String userName, String userNickname, int userGender, int userPhone1, int userPhone2, String userEmail1, String userEmail2, String userAddress, Timestamp userDate) {
 		
+		this.userIDX = userIDX;
 		this.userPassword = userPassword;
 		this.userName = userName;
 		this.userNickname = userNickname;
@@ -28,8 +34,18 @@ public class UDto {
 		this.userEmail1 = userEmail1;
 		this.userEmail2 = userEmail2;
 		this.userAddress = userAddress;
+		this.userDate = userDate;
 	}
 
+	
+	public Timestamp getUserDate() {
+		return userDate;
+	}
+	
+	public int getUserIDX() {
+		return userIDX;
+	}
+	
 	public String getUserPassword() {
 		return userPassword;
 	}

@@ -14,9 +14,9 @@
 </head>
 <body>
 
-<c:set var="id" value="${sessionScope.id }"></c:set>
+<c:set var="userIDX" value="${sessionScope.userIDX }"></c:set>
 <c:choose>
-	<c:when test="${!empty id && id == param.bID }">
+	<c:when test="${!empty userIDX && userIDX == param.bUserIDX }">
 		<!-- 상단 내비게이션 시작 -->
 		<nav class="navbar navbar-inverse">
 		<div class="container">
@@ -86,7 +86,6 @@
 			<div class="container">
 				<form action="bModify.do" method="post" name="write_frm">
 					<input type="hidden" name="bIDX" value="${bModify_view.bIDX }">
-					<input type="hidden" name="bID" value="${sessionScope.id }">
 					<table class="table" style="table-layout:fixed; word-break:break-all;">
 						<tr>
 							<td>

@@ -20,8 +20,9 @@ public class ULoginCommand implements Command {
 		
 		if(result == 1) {
 			request.setAttribute("okULogin", "1");
-			request.getSession().setAttribute("id", id);
 			UDto dto = dao.getUser(id);
+			request.getSession().setAttribute("id", id);
+			request.getSession().setAttribute("userIDX", dto.getUserIDX());
 			request.getSession().setAttribute("getUser", dto);
 			System.out.println("getSession.getMaxInactiveInterval() : " + request.getSession().getMaxInactiveInterval());
 		} else if(result == 0) {
