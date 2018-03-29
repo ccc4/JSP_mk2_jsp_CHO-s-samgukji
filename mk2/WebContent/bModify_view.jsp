@@ -10,7 +10,7 @@
 <title>슈미뽐</title>
 
 <link href="css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" href="">
+<link rel="stylesheet" href="./css/syumibbom.css">
 </head>
 <body>
 
@@ -106,8 +106,10 @@
 							</td>
 						</tr>
 					</table>
-					<input type="button" class="btn btn-primary pull-left" value="목록" onclick="location.href='board.do'">
-					<input type="button" class="btn btn-primary pull-right" value="수정" onclick="modifyConfirm()">
+					<input type="button" class="btn btn-success pull-left" 
+						value="목록" onclick="location.href='board.do'">
+					<input type="button" class="btn btn-primary pull-right" 
+						value="수정" onclick="modifyConfirm()">
 				</form>
 			</div>
 			<!-- 게시글 수정 끝 -->

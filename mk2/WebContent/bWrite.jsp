@@ -10,7 +10,7 @@
 <title>슈미뽐</title>
 
 <link href="css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" href="">
+<link rel="stylesheet" href="./css/syumibbom.css">
 </head>
 <body>
 
@@ -114,7 +114,7 @@
 						<td><textarea rows="13" cols="170" name="bContent" maxlength="1000"></textarea></td>
 					</tr>
 				</table>
-				<input type="button" class="btn btn-primary pull-left" value="목록" onclick="location.href='board.do'">
+				<input type="button" class="btn btn-success pull-left" value="목록" onclick="location.href='board.do'">
 				<input type="button" class="btn btn-primary pull-right" value="작성" onclick="writeConfirm()">
 			</form>
 		</div>

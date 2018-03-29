@@ -10,7 +10,7 @@
 <title>슈미뽐</title>
 
 <link href="css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" href="./css/index.css">
+<link rel="stylesheet" href="./css/syumibbom.css">
 </head>
 <body data-spy="scroll" data-target="#main-jumbotron">
 
@@ -96,11 +96,9 @@
 	<div>
 		<!-- jumbotron -->
 		<div class="container" id="main-jumbotron">
-			<div class="jumbotron"
-				style="background-image: url('images/jumbotron-back.jpg');">
+			<div class="jumbotron" style="background-image: url('images/jumbotron-back.jpg');">
 				<h1 class="text-center">슈미뽐을 소개합니다.</h1>
-				<p class="text-center">여기 세 요정들은 고양이나라에서 인간들의 심장을 헤롭게 하기위해 파견되어
-					왔습니다.</p>
+				<p class="text-center">여기 세 요정들은 고양이나라에서 인간들의 심장을 헤롭게 하기위해 파견되어	왔습니다.</p>
 				<p class="text-center">
 					<a class="btn btn-primary btn-lg" href="#introduce" role="button">슈미뽐이란?&raquo;</a>
 				</p>

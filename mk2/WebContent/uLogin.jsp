@@ -10,7 +10,7 @@
 <title>슈미뽐</title>
 
 <link href="css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" href="./css/login.css">
+<link rel="stylesheet" href="./css/syumibbom.css">
 </head>
 <body>
 

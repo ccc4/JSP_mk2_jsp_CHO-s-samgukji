@@ -7,8 +7,7 @@
 	<c:when test="${okULogin == '1' }">
 		<script type="text/javascript">
 			alert("로그인에 성공했습니다.");
-			history.go(-2);
-			location.reload(); 
+			location.href = "index.jsp";
 		</script>
 	</c:when>
 	<c:when test="${okULogin == '0' }">

@@ -10,7 +10,7 @@
 <title>슈미뽐</title>
 
 <link href="css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" href="./css/board.css">
+<link rel="stylesheet" href="./css/syumibbom.css">
 </head>
 <body>
 
@@ -119,7 +119,7 @@
 					</c:forEach>
 				</tbody>
 			</table>
-			<span class="text-center">paging 구현해야됨</span><br>
+			<input type="button" class="btn btn-success pull-left" value="이전" onclick="#">
 			<input type="button" class="btn btn-primary pull-right" value="글작성" onclick="location.href='bCheckWrite.jsp'">
 		</div>
 		<!-- 게시판 끝 -->
