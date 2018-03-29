@@ -24,7 +24,7 @@
 </c:choose>
 
 	<!-- 상단 내비게이션 시작 -->
-	<nav class="navbar navbar-default">
+	<nav class="navbar navbar-inverse">
 	<div class="container">
 
 		<!-- 타이틀 및 줄였을 때 목록바 -->
@@ -52,13 +52,12 @@
 					</a>
 					<ul class="dropdown-menu" role="menu">
 						<li><a href="#">사진</a></li>
-						<li class="divider"></li>
 						<li><a href="#">동영상</a></li>
 					</ul>
 				</li>
 				<li><a href="board.do">게시판</a></li>
 				<li>
-					<a href="https://www.instagram.com/syuyamom/" style="padding-top: 9px; padding-bottom: 9px;">
+					<a href="https://www.instagram.com/syumibbom/" style="padding-top: 9px; padding-bottom: 9px;">
 						<img src="images/instagramicon.ico" alt="인스타그램">
 					</a>
 				</li>
@@ -74,7 +73,6 @@
 					</a>
 					<ul class="dropdown-menu" role="menu">
 						<li><a href="uModify.jsp">회원정보수정</a></li>
-						<li class="divider"></li>
 						<li><a href="uLogout.jsp">로그아웃</a></li>
 					</ul>
 				</li>
@@ -91,12 +89,12 @@
 	<div>
 		<!-- 회원정보수정 -->
 		<div class="container">
-			<table>
-				<form action="uModify.do" method="post" name="reg_frm">
+			<form action="uModify.do" method="post" name="reg_frm">
+				<table class="table" style="table-layout:fixed; word-break:break-all;">
 					<tr>
-						<td>아이디</td>
+						<td width="150">아이디</td>
 						<td>
-							<p>${sessionScope.id }</p>
+							${sessionScope.id }
 						</td>
 					</tr>
 					<tr>
@@ -120,12 +118,12 @@
 						<td>
 							<c:choose>
 								<c:when test="${getUser.userGender == 1 }">
-									<input type="radio" name="userGender" value="1" checked>남자 &nbsp;
-									<input type="radio" name="userGender" value="0">여자
+									<input type="radio" name="userGender" value="1" checked>&nbsp;남자 &nbsp;
+									<input type="radio" name="userGender" value="0">&nbsp;여자
 								</c:when>
 								<c:otherwise>
-									<input type="radio" name="userGender" value="1">남자 &nbsp;
-									<input type="radio" name="userGender" value="0" checked>여자
+									<input type="radio" name="userGender" value="1">&nbsp;남자 &nbsp;
+									<input type="radio" name="userGender" value="0" checked>&nbsp;여자
 								</c:otherwise>
 							</c:choose>
 						</td>
@@ -148,11 +146,9 @@
 						<td>주소</td>
 						<td><input type="text" name="userAddress" maxlength="50" value="${getUser.userAddress }"></td>
 					</tr>
-					<tr>
-						<td colspan="2"><input type="button" value="회원정보 수정" onclick="modifyConfirm()"></td>
-					</tr>
-				</form>
-			</table>
+				</table>
+				<input type="button" class="btn btn-primary pull-right" value="수정" onclick="modifyConfirm()">
+			</form>
 		</div>
 		<!-- 회원정보수정 끝 -->
 	</div>

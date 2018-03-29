@@ -17,13 +17,14 @@
 <c:choose>
 	<c:when test="${!empty sessionScope.getUser }">
 		<script type="text/javascript">
+		alert("이미 로그인이 되어있습니다.");
 			location.href = "index.jsp";
 		</script>
 	</c:when>
 </c:choose>
 
 	<!-- 상단 내비게이션 시작 -->
-	<nav class="navbar navbar-default">
+	<nav class="navbar navbar-inverse">
 	<div class="container">
 
 		<!-- 타이틀 및 줄였을 때 목록바 -->
@@ -51,13 +52,12 @@
 					</a>
 					<ul class="dropdown-menu" role="menu">
 						<li><a href="#">사진</a></li>
-						<li class="divider"></li>
 						<li><a href="#">동영상</a></li>
 					</ul>
 				</li>
 				<li><a href="board.do">게시판</a></li>
 				<li>
-					<a href="https://www.instagram.com/syuyamom/" style="padding-top: 9px; padding-bottom: 9px;">
+					<a href="https://www.instagram.com/syumibbom/" style="padding-top: 9px; padding-bottom: 9px;">
 						<img src="images/instagramicon.ico" alt="인스타그램">
 					</a>
 				</li>
@@ -66,14 +66,13 @@
 			
 			<!-- 내비게이션 우측 로그인or회원가입 -->
 			<ul class="nav navbar-nav navbar-right">
-				<li class="active"><a disable>로그인하기&nbsp;<span class="glyphicon glyphicon-hand-right"></span></a></li>
+				<li><a disable>로그인하기&nbsp;<span class="glyphicon glyphicon-hand-right"></span></a></li>
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
 						<sapn class="glyphicon glyphicon-user active"></sapn>
 					</a>
 					<ul class="dropdown-menu" role="menu">
-						<li><a href="uLogin.jsp">로그인</a></li>
-						<li class="divider"></li>
+						<li class="active"><a href="uLogin.jsp">로그인</a></li>
 						<li><a href="uJoin.jsp">회원가입</a></li>
 					</ul>
 				</li>

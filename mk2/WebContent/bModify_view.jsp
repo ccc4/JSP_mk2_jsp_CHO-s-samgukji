@@ -18,7 +18,7 @@
 <c:choose>
 	<c:when test="${!empty id && id == param.bID }">
 		<!-- 상단 내비게이션 시작 -->
-		<nav class="navbar navbar-default">
+		<nav class="navbar navbar-inverse">
 		<div class="container">
 
 			<!-- 타이틀 및 줄였을 때 목록바 -->
@@ -46,13 +46,12 @@
 						</a>
 						<ul class="dropdown-menu" role="menu">
 							<li><a href="#">사진</a></li>
-							<li class="divider"></li>
 							<li><a href="#">동영상</a></li>
 						</ul>
 					</li>
 					<li class="active"><a href="board.do">게시판</a></li>
 					<li>
-						<a href="https://www.instagram.com/syuyamom/" style="padding-top: 9px; padding-bottom: 9px;"> 
+						<a href="https://www.instagram.com/syumibbom/" style="padding-top: 9px; padding-bottom: 9px;"> 
 							<img src="images/instagramicon.ico" alt="인스타그램">
 						</a>
 					</li>
@@ -68,7 +67,6 @@
 						</a>
 						<ul class="dropdown-menu" role="menu">
 							<li><a href="uModify.jsp">회원정보수정</a></li>
-							<li class="divider"></li>
 							<li><a href="uLogout.jsp">로그아웃</a></li>
 						</ul>
 					</li>
@@ -86,32 +84,31 @@
 		<div>
 			<!-- 게시글 수정 -->
 			<div class="container">
-				<table width="900" cellpadding="0" cellspacing="0" border="1">
-					<form action="bModify.do" method="post" name="write_frm">
-						<input type="hidden" name="bIDX" value="${bModify_view.bIDX }">
-						<input type="hidden" name="bID" value="${sessionScope.id }">
+				<form action="bModify.do" method="post" name="write_frm">
+					<input type="hidden" name="bIDX" value="${bModify_view.bIDX }">
+					<input type="hidden" name="bID" value="${sessionScope.id }">
+					<table class="table" style="table-layout:fixed; word-break:break-all;">
 						<tr>
-							<td colspan="3"><input type="text" name="bTitle"
-								value="${bModify_view.bTitle }" size="60" maxlength="30">
+							<td>
+								<input type="text" name="bTitle" value="${bModify_view.bTitle }" size="180" maxlength="30">
 							</td>
 						</tr>
 						<tr>
-							<td>글쓴이 : ${bModify_view.bNickname } &nbsp; 등록일 :
-								${bModify_view.bDate } &nbsp; 조회수 : ${bModify_view.bHit }</td>
-						</tr>
-						<tr>
-							<td colspan="3" height="300" valign="top"><textarea
-									rows="10" cols="60" name="bContent" maxlength="1000">${bModify_view.bContent }</textarea>
+							<td>
+								글쓴이 : ${bModify_view.bNickname } &nbsp; 
+								등록일 : ${bModify_view.bDate } &nbsp; 
+								조회수 : ${bModify_view.bHit }
 							</td>
 						</tr>
 						<tr>
-							<td colspan="3">
-								<input type="button" value="수정" onclick="modifyConfirm()"> &nbsp; 
-								<input type="button" value="목록" onclick="location.href='board.do'">
+							<td height="300">
+								<textarea rows="13" cols="180" name="bContent" maxlength="1000">${bModify_view.bContent }</textarea>
 							</td>
 						</tr>
-					</form>
-				</table>
+					</table>
+					<input type="button" class="btn btn-primary pull-left" value="목록" onclick="location.href='board.do'">
+					<input type="button" class="btn btn-primary pull-right" value="수정" onclick="modifyConfirm()">
+				</form>
 			</div>
 			<!-- 게시글 수정 끝 -->
 		</div>

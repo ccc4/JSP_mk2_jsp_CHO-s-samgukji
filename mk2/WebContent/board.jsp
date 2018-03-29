@@ -15,7 +15,7 @@
 <body>
 
 	<!-- 상단 내비게이션 시작 -->
-	<nav class="navbar navbar-default">
+	<nav class="navbar navbar-inverse">
 	<div class="container">
 
 		<!-- 타이틀 및 줄였을 때 목록바 -->
@@ -43,13 +43,12 @@
 					</a>
 					<ul class="dropdown-menu" role="menu">
 						<li><a href="#">사진</a></li>
-						<li class="divider"></li>
 						<li><a href="#">동영상</a></li>
 					</ul>
 				</li>
 				<li class="active"><a href="board.do">게시판</a></li>
 				<li>
-					<a href="https://www.instagram.com/syuyamom/" style="padding-top: 9px; padding-bottom: 9px;">
+					<a href="https://www.instagram.com/syumibbom/" style="padding-top: 9px; padding-bottom: 9px;">
 						<img src="images/instagramicon.ico" alt="인스타그램">
 					</a>
 				</li>
@@ -67,7 +66,6 @@
 							</a>
 							<ul class="dropdown-menu" role="menu">
 								<li><a href="uModify.jsp">회원정보수정</a></li>
-								<li class="divider"></li>
 								<li><a href="uLogout.jsp">로그아웃</a></li>
 							</ul>
 						</li>
@@ -80,7 +78,6 @@
 							</a>
 							<ul class="dropdown-menu" role="menu">
 								<li><a href="uLogin.jsp">로그인</a></li>
-								<li class="divider"></li>
 								<li><a href="uJoin.jsp">회원가입</a></li>
 							</ul>
 						</li>
@@ -100,32 +97,30 @@
 	<div>
 		<!-- 게시판 -->
 		<div class="container">
-			<table width="1000" align="center" cellpadding="5" cellspacing="2" border="1" style="table-layout:fixed; word-break:break-all;">
-				<tr>
-					<th width="30">번호</th>
-					<th width="350">제목</th>
-					<th width="60">글쓴이</th>
-					<th width="100">날짜</th>
-					<th width="40">조회</th>
-				</tr>
-
-				<c:forEach items="${bList }" var="dto">
-				<tr>
-					<td width="30">${dto.bIDX }</td>
-					<td width="350" class="list"><a href="bContent_view.do?bIDX=${dto.bIDX }">${dto.bTitle }</a></td>
-					<td width="60">${dto.bNickname }</td>
-					<td width="100">${dto.bDate }</td>
-					<td width="40">${dto.bHit }</td>
-				</tr>
-				</c:forEach>
-
-				<tr>
-					<td colspan="5" style="text-align: center">paging 구현해야됨</td>
-				</tr>
-				<tr>
-					<td colspan="5" style="text-align: right;"><input type="button" value="글작성" onclick="location.href='bCheckWrite.jsp'"></td>
-				</tr>
+			<table class="table table-striped" style="table-layout:fixed; word-break:break-all;">
+				<thead>
+					<tr>
+						<th width="30" style="background-color: #eeeeee; text-align: center;">번호</th>
+						<th width="350" style="background-color: #eeeeee; text-align: center;">제목</th>
+						<th width="60" style="background-color: #eeeeee; text-align: center;">글쓴이</th>
+						<th width="100" style="background-color: #eeeeee; text-align: center;">날짜</th>
+						<th width="40" style="background-color: #eeeeee; text-align: center;">조회</th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach items="${bList }" var="dto">
+					<tr>
+						<td>${dto.bIDX }</td>
+						<td class="list"><a href="bContent_view.do?bIDX=${dto.bIDX }">${dto.bTitle }</a></td>
+						<td>${dto.bNickname }</td>
+						<td>${dto.bDate }</td>
+						<td>${dto.bHit }</td>
+					</tr>
+					</c:forEach>
+				</tbody>
 			</table>
+			<span class="text-center">paging 구현해야됨</span><br>
+			<input type="button" class="btn btn-primary pull-right" value="글작성" onclick="location.href='bCheckWrite.jsp'">
 		</div>
 		<!-- 게시판 끝 -->
 	</div>

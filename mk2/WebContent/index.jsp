@@ -15,7 +15,7 @@
 <body data-spy="scroll" data-target="#main-jumbotron">
 
 	<!-- 상단 내비게이션 시작 -->
-	<nav class="navbar navbar-default">
+	<nav class="navbar navbar-inverse">
 	<div class="container">
 
 		<!-- 타이틀 및 줄였을 때 목록바 -->
@@ -43,13 +43,12 @@
 					</a>
 					<ul class="dropdown-menu" role="menu">
 						<li><a href="#">사진</a></li>
-						<li class="divider"></li>
 						<li><a href="#">동영상</a></li>
 					</ul>
 				</li>
 				<li><a href="board.do">게시판</a></li>
 				<li>
-					<a href="https://www.instagram.com/syuyamom/" style="padding-top: 9px; padding-bottom: 9px;">
+					<a href="https://www.instagram.com/syumibbom/" style="padding-top: 9px; padding-bottom: 9px;">
 						<img src="images/instagramicon.ico" alt="인스타그램">
 					</a>
 				</li>
@@ -67,7 +66,6 @@
 							</a>
 							<ul class="dropdown-menu" role="menu">
 								<li><a href="uModify.jsp">회원정보수정</a></li>
-								<li class="divider"></li>
 								<li><a href="uLogout.jsp">로그아웃</a></li>
 							</ul>
 						</li>
@@ -80,7 +78,6 @@
 							</a>
 							<ul class="dropdown-menu" role="menu">
 								<li><a href="uLogin.jsp">로그인</a></li>
-								<li class="divider"></li>
 								<li><a href="uJoin.jsp">회원가입</a></li>
 							</ul>
 						</li>
@@ -189,9 +186,9 @@
 
 
 	<footer class="footer">
-	<div class="container">
-		<p class="text-muted">Copyright &copy; SYUMIBBOM</p>
-	</div>
+		<div class="container">
+			<p class="text-muted">Copyright &copy; SYUMIBBOM</p>
+		</div>
 	</footer>
 
 

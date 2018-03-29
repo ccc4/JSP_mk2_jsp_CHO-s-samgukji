@@ -15,7 +15,7 @@
 <body>
 
 	<!-- 상단 내비게이션 시작 -->
-	<nav class="navbar navbar-default">
+	<nav class="navbar navbar-inverse">
 	<div class="container">
 
 		<!-- 타이틀 및 줄였을 때 목록바 -->
@@ -43,13 +43,12 @@
 					</a>
 					<ul class="dropdown-menu" role="menu">
 						<li><a href="#">사진</a></li>
-						<li class="divider"></li>
 						<li><a href="#">동영상</a></li>
 					</ul>
 				</li>
 				<li class="active"><a href="board.do">게시판</a></li>
 				<li>
-					<a href="https://www.instagram.com/syuyamom/" style="padding-top: 9px; padding-bottom: 9px;">
+					<a href="https://www.instagram.com/syumibbom/" style="padding-top: 9px; padding-bottom: 9px;">
 						<img src="images/instagramicon.ico" alt="인스타그램">
 					</a>
 				</li>
@@ -66,7 +65,6 @@
 							<sapn class="glyphicon glyphicon-user"></sapn></a>
 							<ul class="dropdown-menu" role="menu">
 								<li><a href="uModify.jsp">회원정보수정</a></li>
-								<li class="divider"></li>
 								<li><a href="uLogout.jsp">로그아웃</a></li>
 							</ul>
 						</li>
@@ -79,7 +77,6 @@
 							</a>
 							<ul class="dropdown-menu" role="menu">
 								<li><a href="uLogin.jsp">로그인</a></li>
-								<li class="divider"></li>
 								<li><a href="uJoin.jsp">회원가입</a></li>
 							</ul>
 						</li>
@@ -99,28 +96,31 @@
 	<div>
 		<!-- 게시글 보기 -->
 		<div class="container">
-			<table width="900" cellpadding="0" cellspacing="0" border="1">
-				<tr>
-					<td colspan="3">${bContentView.bTitle }</td>
-				</tr>
-				<tr>
-					<td>
-						글쓴이 : ${bContentView.bNickname } &nbsp; 
-						등록일 : ${bContentView.bDate } &nbsp; 
-						조회수 : ${bContentView.bHit }
-					</td>
-				</tr>
-				<tr>
-					<td colspan="3" height="300" valign="top">${bContentView.bContent }</td>
-				</tr>
-				<tr>
-					<td colspan="3">
-						<input type="button" value="목록" onclick="location.href='board.do'"> 
-						<input type="button" value="수정" onclick="location.href='bCheckModify.jsp?bID=${bContentView.bID }&bIDX=${bContentView.bIDX }'">
-						<input type="button" value="삭제" onclick="location.href='bCheckDelete.jsp?bID=${bContentView.bID }&bIDX=${bContentView.bIDX }'">
-					</td>
-				</tr>
+			<table class="table" style="table-layout:fixed; word-break:break-all;">
+				<thead>
+					<tr>
+						<th style="background-color: #eeeeee;">${bContentView.bTitle }</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							글쓴이: ${bContentView.bNickname } &nbsp; 
+							등록일: ${bContentView.bDate } &nbsp; 
+							조회수: ${bContentView.bHit }
+						</td>
+					</tr>
+					<tr>
+						<td height="300">${bContentView.bContent }</td>
+					</tr>
+				</tbody>
 			</table>
+			<input type="button" class="btn btn-primary pull-left"
+				value="목록" onclick="location.href='board.do'">
+			<input type="button" class="btn btn-primary pull-right" 
+				value="삭제" onclick="location.href='bCheckDelete.jsp?bID=${bContentView.bID }&bIDX=${bContentView.bIDX }'">
+			<input type="button" class="btn btn-primary pull-right"
+				value="수정" onclick="location.href='bCheckModify.jsp?bID=${bContentView.bID }&bIDX=${bContentView.bIDX }'">
 		</div>
 		<!-- 게시글 보기 끝 -->
 	</div>

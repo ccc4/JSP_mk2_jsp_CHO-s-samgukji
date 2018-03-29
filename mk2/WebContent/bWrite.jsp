@@ -37,7 +37,7 @@
 </c:choose>
 
 	<!-- 상단 내비게이션 시작 -->
-	<nav class="navbar navbar-default">
+	<nav class="navbar navbar-inverse">
 	<div class="container">
 
 		<!-- 타이틀 및 줄였을 때 목록바 -->
@@ -65,13 +65,12 @@
 					</a>
 					<ul class="dropdown-menu" role="menu">
 						<li><a href="#">사진</a></li>
-						<li class="divider"></li>
 						<li><a href="#">동영상</a></li>
 					</ul>
 				</li>
 				<li class="active"><a href="board.do">게시판</a></li>
 				<li>
-					<a href="https://www.instagram.com/syuyamom/" style="padding-top: 9px; padding-bottom: 9px;">
+					<a href="https://www.instagram.com/syumibbom/" style="padding-top: 9px; padding-bottom: 9px;">
 						<img src="images/instagramicon.ico" alt="인스타그램">
 					</a>
 				</li>
@@ -86,7 +85,6 @@
 					<sapn class="glyphicon glyphicon-user"></sapn></a>
 					<ul class="dropdown-menu" role="menu">
 						<li><a href="uModify.jsp">회원정보수정</a></li>
-						<li class="divider"></li>
 						<li><a href="uLogout.jsp">로그아웃</a></li>
 					</ul>
 				</li>
@@ -104,25 +102,21 @@
 	<div>
 		<!-- 게시글 작성 -->
 		<div class="container">
-			<table width="900" cellpadding="0" cellspacing="0">
-				<form action="bWrite.do" method="post" name="write_frm">
-					<input type="hidden" name="userNickname" value="${getUser.userNickname }">
+			<form action="bWrite.do" method="post" name="write_frm">
+				<input type="hidden" name="userNickname" value="${getUser.userNickname }">
+				<table class="table" style="table-layout:fixed; word-break:break-all;">
 					<tr>
-						<td>제목</td>
-						<td><input type="text" name="bTitle" size="60" maxlength="255"></td>
+						<td width="50">제목</td>
+						<td><input type="text" name="bTitle" size="170" maxlength="255"></td>
 					</tr>
 					<tr>
 						<td>내용</td>
-						<td><textarea rows="10" cols="60" name="bContent" maxlength="1000"></textarea></td>
+						<td><textarea rows="13" cols="170" name="bContent" maxlength="1000"></textarea></td>
 					</tr>
-					<tr>
-						<td colspan="2">
-							<input type="button" value="작성완료" onclick="writeConfirm()"> &nbsp; 
-							<input type="reset" value="다시쓰기"> &nbsp; 
-							<input type="button" value="목록으로" onclick="location.href='board.do'"></td>
-					</tr>
-				</form>
-			</table>
+				</table>
+				<input type="button" class="btn btn-primary pull-left" value="목록" onclick="location.href='board.do'">
+				<input type="button" class="btn btn-primary pull-right" value="작성" onclick="writeConfirm()">
+			</form>
 		</div>
 		<!-- 게시글 작성 끝 -->
 	</div>
