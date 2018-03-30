@@ -4,18 +4,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.Dao;
-import dto.BDto;
+import dto.UDto;
 
-public class BModifyViewCommand implements Command {
+public class UModifyViewCommand implements Command {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
-
-		String idx = request.getParameter("bIDX");
+		
+		int sessionIDX = (int) request.getSession().getAttribute("sessionIDX");
 		
 		Dao dao = Dao.getInstance();
-		BDto dto = dao.bGetContent(idx);
-		request.setAttribute("bModify_view", dto);
+		UDto dto = dao.getUser(sessionIDX);
+		request.setAttribute("getUser", dto);
+
 	}
 
 }

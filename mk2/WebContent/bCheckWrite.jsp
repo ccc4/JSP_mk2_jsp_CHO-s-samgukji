@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <c:choose>
-	<c:when test="${!empty sessionScope.getUser }">
+	<c:when test="${!empty sessionScope.sessionIDX }">
 		<script type="text/javascript">
 			location.href = "bWrite.jsp";
 		</script>

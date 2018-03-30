@@ -14,20 +14,8 @@
 </head>
 <body>
 
-<%-- <%
-	Object getUser = session.getAttribute("getUser");
-				
-	if(getUser != null) {
-%>
-	<script type="text/javascript">
-		location.href = "index.jsp";
-	</script>
-<%
-	} 
-%> --%>
-
 <c:choose>
-	<c:when test="${!empty sessionScope.getUser }">
+	<c:when test="${!empty sessionScope.sessionIDX }">
 		<script type="text/javascript">
 			alert("이미 로그인이 되어있습니다.");
 			location.href = "index.jsp";

@@ -10,13 +10,13 @@ public class BWriteCommand implements Command {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		
-		int userIDX = (int) request.getSession().getAttribute("userIDX");
+		int sessionIDX = (int) request.getSession().getAttribute("sessionIDX");
 		String nickname = request.getParameter("userNickname");
 		String title = request.getParameter("bTitle");
 		String content = request.getParameter("bContent");
 		
 		Dao dao = Dao.getInstance();
-		int result = dao.bWrite(userIDX, nickname, title, content);
+		int result = dao.bWrite(sessionIDX, nickname, title, content);
 		System.out.println(result);
 
 		if(result == 1) {

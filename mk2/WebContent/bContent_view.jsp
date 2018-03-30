@@ -14,6 +14,15 @@
 </head>
 <body>
 
+<c:choose>
+	<c:when test="${empty requestScope.bContentView }">
+		<script type="text/javascript">
+			alert("잘못된 접근 경로입니다.");
+			location.href="index.jsp";
+		</script>
+	</c:when>
+</c:choose>
+
 	<!-- 상단 내비게이션 시작 -->
 	<nav class="navbar navbar-inverse">
 	<div class="container">
@@ -58,13 +67,13 @@
 			<!-- 내비게이션 우측 로그인or회원가입 -->
 			<ul class="nav navbar-nav navbar-right">
 				<c:choose>
-					<c:when test="${!empty sessionScope.getUser}">
-						<li><a disable>${getUser.userNickname }님 환영합니다.</a></li>
+					<c:when test="${!empty sessionScope.sessionNickname}">
+						<li><a disable>${sessionScope.sessionNickname }님 환영합니다.</a></li>
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
 							<sapn class="glyphicon glyphicon-user"></sapn></a>
 							<ul class="dropdown-menu" role="menu">
-								<li><a href="uModify.jsp">회원정보수정</a></li>
+								<li><a href="uModify_view.do">회원정보수정</a></li>
 								<li><a href="uLogout.jsp">로그아웃</a></li>
 							</ul>
 						</li>

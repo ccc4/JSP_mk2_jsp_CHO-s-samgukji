@@ -116,7 +116,7 @@ public class Dao {
 		return re;
 	}
 	
-	public UDto getUser(String id) {
+	public UDto getSession(String id) {
 
 		UDto dto = null;
 		
@@ -133,18 +133,9 @@ public class Dao {
 			
 			if(rs.next()) {
 				int userIDX = rs.getInt("userIDX");
-				String userPassword = rs.getString("userPassword");
-				String userName = rs.getString("userName");
 				String userNickname = rs.getString("userNickname");
-				int userGender = rs.getInt("userGender");
-				int userPhone1 = rs.getInt("userPhone1");
-				int userPhone2 = rs.getInt("userPhone2");
-				String userEmail1 = rs.getString("userEmail1");
-				String userEmail2 = rs.getString("userEmail2");
-				String userAddress = rs.getString("userAddress");
-				Timestamp userDate = rs.getTimestamp("userDate");
 				
-				dto = new UDto(userIDX, userPassword, userName, userNickname, userGender, userPhone1, userPhone2, userEmail1, userEmail2, userAddress, userDate);
+				dto = new UDto(userIDX, userNickname);
 			}
 			
 		} catch (Exception e) {
@@ -162,7 +153,53 @@ public class Dao {
 		return dto;
 	}
 	
-	public int uModify(String id, String pw, String name, String nickname, int gender, int phone1, int phone2,
+	public UDto getUser(int sessionIDX) {
+
+		UDto dto = null;
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = datasource.getConnection();
+			String sql = "SELECT * FROM user WHERE userIDX = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, sessionIDX);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				String userID = rs.getString("userID");
+				String userPassword = rs.getString("userPassword");
+				String userName = rs.getString("userName");
+				String userNickname = rs.getString("userNickname");
+				int userGender = rs.getInt("userGender");
+				int userPhone1 = rs.getInt("userPhone1");
+				int userPhone2 = rs.getInt("userPhone2");
+				String userEmail1 = rs.getString("userEmail1");
+				String userEmail2 = rs.getString("userEmail2");
+				String userAddress = rs.getString("userAddress");
+				Timestamp userDate = rs.getTimestamp("userDate");
+				
+				dto = new UDto(userID, userPassword, userName, userNickname, userGender, userPhone1, userPhone2, userEmail1, userEmail2, userAddress, userDate);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(rs != null) rs.close();
+				if(pstmt != null) pstmt.close();
+				if(conn != null) conn.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		
+		return dto;
+	}
+	
+	public int uModify(int sessionIDX, String pw, String name, String nickname, int gender, int phone1, int phone2,
 			String email1, String email2, String address) {
 
 		int re = 0;
@@ -172,7 +209,7 @@ public class Dao {
 		
 		try {
 			conn = datasource.getConnection();
-			String sql = "UPDATE user SET userPassword = ?, userName = ?, userNickname = ?, userGender = ?, userPhone1 = ?, userPhone2 = ?, userEmail1 = ?, userEmail2 = ?, userAddress = ? WHERE userID = ?";
+			String sql = "UPDATE user SET userPassword = ?, userName = ?, userNickname = ?, userGender = ?, userPhone1 = ?, userPhone2 = ?, userEmail1 = ?, userEmail2 = ?, userAddress = ? WHERE userIDX = ?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, pw);
 			pstmt.setString(2, name);
@@ -183,7 +220,7 @@ public class Dao {
 			pstmt.setString(7, email1);
 			pstmt.setString(8, email2);
 			pstmt.setString(9, address);
-			pstmt.setString(10, id);
+			pstmt.setInt(10, sessionIDX);
 			int check = pstmt.executeUpdate();
 			
 			if(check == 0) {
@@ -249,7 +286,7 @@ public class Dao {
 		return dtos;
 	}
 	
-	public int bWrite(int userIDX, String nickname, String title, String content) {
+	public int bWrite(int sessionIDX, String nickname, String title, String content) {
 		
 		int re = 0;
 		
@@ -260,7 +297,7 @@ public class Dao {
 			conn = datasource.getConnection();
 			String sql = "INSERT INTO board (bUserIDX, bNickname, bTitle, bContent) VALUES (?, ?, ?, ?)";
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, userIDX);;
+			pstmt.setInt(1, sessionIDX);;
 			pstmt.setString(2, nickname);
 			pstmt.setString(3, title);
 			pstmt.setString(4, content);
@@ -354,7 +391,7 @@ public class Dao {
 		
 	}
 	
-	public BDto bContentModify(String idx) {
+	public BDto bGetContent(String idx) {
 		
 		BDto dto = null;
 		
@@ -396,7 +433,7 @@ public class Dao {
 		return dto;
 	}
 	
-	public int bModify(String idx, int userIDX, String title, String content) {
+	public int bModify(String idx, int sessionIDX, String title, String content) {
 
 		int re = 0;
 		
@@ -410,7 +447,7 @@ public class Dao {
 			pstmt.setString(1, title);
 			pstmt.setString(2, content);
 			pstmt.setString(3, idx);
-			pstmt.setInt(4, userIDX);
+			pstmt.setInt(4, sessionIDX);
 			int check = pstmt.executeUpdate();
 			
 			if(check == 0) {

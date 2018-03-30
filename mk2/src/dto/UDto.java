@@ -22,9 +22,9 @@ public class UDto {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public UDto(int userIDX, String userPassword, String userName, String userNickname, int userGender, int userPhone1, int userPhone2, String userEmail1, String userEmail2, String userAddress, Timestamp userDate) {
+	public UDto(String userID, String userPassword, String userName, String userNickname, int userGender, int userPhone1, int userPhone2, String userEmail1, String userEmail2, String userAddress, Timestamp userDate) {
 		
-		this.userIDX = userIDX;
+		this.userID = userID;
 		this.userPassword = userPassword;
 		this.userName = userName;
 		this.userNickname = userNickname;
@@ -36,8 +36,13 @@ public class UDto {
 		this.userAddress = userAddress;
 		this.userDate = userDate;
 	}
-
 	
+	public UDto(int userIDX, String userNickname) {
+
+		this.userIDX = userIDX;
+		this.userNickname = userNickname;
+	}
+
 	public Timestamp getUserDate() {
 		return userDate;
 	}

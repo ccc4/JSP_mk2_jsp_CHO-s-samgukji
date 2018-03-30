@@ -2,9 +2,9 @@
     pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<c:set var="userIDX" value="${sessionScope.userIDX }"></c:set>
+<c:set var="sessionIDX" value="${sessionScope.sessionIDX }"></c:set>
 <c:choose>
-	<c:when test="${!empty userIDX && userIDX == param.bUserIDX }">
+	<c:when test="${!empty sessionIDX && sessionIDX == param.bUserIDX }">
 		<script type="text/javascript">
 			location.href="bModify_view.do?bUserIDX=${param.bUserIDX}&bIDX=${param.bIDX}";
 		</script>

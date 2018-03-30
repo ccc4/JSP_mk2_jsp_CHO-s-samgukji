@@ -15,7 +15,7 @@
 <body>
 
 <c:choose>
-	<c:when test="${!empty sessionScope.getUser }">
+	<c:when test="${!empty sessionScope.sessionIDX }">
 		<script type="text/javascript">
 		alert("이미 로그인이 되어있습니다.");
 			location.href = "index.jsp";

@@ -20,6 +20,7 @@ import command.Command;
 import command.UJoinCommand;
 import command.ULoginCommand;
 import command.UModifyCommand;
+import command.UModifyViewCommand;
 
 /**
  * Servlet implementation class mFrontcontroller
@@ -76,6 +77,11 @@ public class Frontcontroller extends HttpServlet {
 			command = new ULoginCommand();
 			command.execute(request, response);
 			viewpage = "okULogin.jsp";
+		}
+		else if(com.equals("/uModify_view.do")) {
+			command = new UModifyViewCommand();
+			command.execute(request, response);
+			viewpage = "uModify.jsp";
 		}
 		else if(com.equals("/uModify.do")) {
 			command = new UModifyCommand();

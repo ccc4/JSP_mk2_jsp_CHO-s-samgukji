@@ -10,11 +10,11 @@ public class BDeleteCommand implements Command {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		
-		Object sessionUserIDX = request.getSession().getAttribute("userIDX");
+		Object sessionIDX = request.getSession().getAttribute("sessionIDX");
 		String userIDX = request.getParameter("bUserIDX");
 		String idx = request.getParameter("bIDX");
 
-		if(sessionUserIDX == null) {
+		if(sessionIDX == null) {
 			request.setAttribute("okBDelete", "-1"); // 잘못된 접근
 		} else {
 			Dao dao = Dao.getInstance();

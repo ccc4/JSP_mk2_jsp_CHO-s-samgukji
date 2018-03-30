@@ -16,7 +16,7 @@ public class BDto {
 
 	}
 	
-public BDto(int bIDX, int bUserIDX, String bNickname, String bTitle, Timestamp bDate, int bHit) {
+	public BDto(int bIDX, int bUserIDX, String bNickname, String bTitle, Timestamp bDate, int bHit) {
 		
 		this.bIDX = bIDX;
 		this.bUserIDX = bUserIDX;
@@ -26,7 +26,7 @@ public BDto(int bIDX, int bUserIDX, String bNickname, String bTitle, Timestamp b
 		this.bHit = bHit;
 	}
 	
-public BDto(int bIDX, int bUserIDX, String bNickname, String bTitle, String bContent, Timestamp bDate, int bHit) {
+	public BDto(int bIDX, int bUserIDX, String bNickname, String bTitle, String bContent, Timestamp bDate, int bHit) {
 		
 		this.bIDX = bIDX;
 		this.bUserIDX = bUserIDX;

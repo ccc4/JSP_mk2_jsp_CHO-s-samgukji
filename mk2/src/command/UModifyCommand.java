@@ -11,7 +11,7 @@ public class UModifyCommand implements Command {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		
-		String id = (String) request.getSession().getAttribute("id");
+		int sessionIDX = (int) request.getSession().getAttribute("sessionIDX");
 		String pw = request.getParameter("userPassword");
 		String name = request.getParameter("userName");
 		String nickname = request.getParameter("userNickname");
@@ -23,13 +23,13 @@ public class UModifyCommand implements Command {
 		String address = request.getParameter("userAddress");
 		
 		Dao dao = Dao.getInstance();
-		int result = dao.uModify(id, pw, name, nickname, gender, phone1, phone2, email1, email2, address);
+		int result = dao.uModify(sessionIDX, pw, name, nickname, gender, phone1, phone2, email1, email2, address);
 		System.out.println(result);
 		
 		if(result == 1) {
 			request.setAttribute("okUModify", "1");
-			UDto dto = dao.getUser(id);
-			request.getSession().setAttribute("getUser", dto);
+			UDto dto = dao.getUser(sessionIDX);
+			request.getSession().setAttribute("sessionNickname", dto.getUserNickname());
 		} else if(result == 0) {
 			request.setAttribute("okUModify", "0");
 		}
