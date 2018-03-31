@@ -15,6 +15,12 @@
 <body>
 
 <c:choose>
+	<c:when test="${requestScope.paging == 'false' }">
+		<script type="text/javascript">
+			alert("존재하지 않는 페이지입니다.");
+			location.href="board.do";
+		</script>
+	</c:when>
 	<c:when test="${empty requestScope.bList }">
 		<script type="text/javascript">
 			alert("잘못된 접근 경로입니다.");
@@ -128,7 +134,7 @@
 					</c:forEach>
 				</tbody>
 			</table>
-			<input type="button" class="btn btn-success pull-left" value="이전" onclick="#">
+			${requestScope.paging }
 			<input type="button" class="btn btn-primary pull-right" value="글작성" onclick="location.href='bCheckWrite.jsp'">
 		</div>
 		<!-- 게시판 끝 -->

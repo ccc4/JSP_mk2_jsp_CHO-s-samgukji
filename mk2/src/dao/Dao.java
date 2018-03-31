@@ -16,6 +16,12 @@ import javax.naming.InitialContext;
 
 public class Dao {
 	
+	// 한 페이지에 보여줄 게시글의 수
+	private static final int onePage = 5;
+	// 한번에 보여줄 페이지 갯수 (1~10,11~20)
+	private static final int oneSection = 10;
+	
+	
 	DataSource datasource;
 	
 	private static Dao instance = new Dao();
@@ -245,7 +251,113 @@ public class Dao {
 	
 //	게시판 DAO
 	
-	public ArrayList<BDto> bList() {
+	public String bPaging(int pageNum) {
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		String paging = "";
+		
+		int page = pageNum;
+		// 한 페이지에 보여줄 게시글의 수
+		int onePage = Dao.onePage;
+		// 한번에 보여줄 페이지 갯수 (1~10,11~20)
+		int oneSection = Dao.oneSection;
+		
+		try {
+			conn = datasource.getConnection();
+			String sql = "SELECT count(*) AS cnt FROM board";
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			// 전체 게시글 수
+			int allPost = 0;
+			while(rs.next()) {
+				allPost = rs.getInt("cnt");				
+			}
+			// 전체 페이지 수
+			int allPage = (int) Math.ceil((double)allPost / (double)onePage);
+			
+			if(page < 1 || page > allPage) {
+				return "false";
+			}
+			
+			// 현재 섹션
+			int currentSection = (int) Math.ceil((double)page / (double)oneSection);
+			// 전체 섹션 수
+			int allSection = (int) Math.ceil((double)allPage / (double)oneSection);
+			
+			//현재 섹션 첫 페이지
+			int firstPage = (currentSection * oneSection) - (oneSection -1);
+			//현재 섹션 마지막 페이지
+			int lastPage = 0;
+			
+			if(currentSection == allSection) {
+				//현재 섹션이 마지막 섹션이면 allPage가 마지막 페이지
+				lastPage = allPage;
+			} else {
+				//현재 섹션의 마지막 페이지
+				lastPage = currentSection * oneSection;
+			}
+			
+			//이전 페이지
+			int prevPage = ((currentSection - 1) * oneSection);
+			//다음 페이지
+			int nextPage = ((currentSection + 1) * oneSection) - (oneSection -1);
+			
+			// 페이징 저장할 변수
+			paging += "<div class=\"paging\">";
+			
+			// 첫 페이지가 아니라면 처음 버튼 생성
+			if(page != 1) {
+				paging += "<a href='board.do?page=1'>처음</a>";
+			} 
+			
+			// 첫 섹션이 아니라면 이전 버튼 생성
+			if(currentSection != 1) {
+				paging += "<a href='board.do?page=" + prevPage + "'>이전</a>";
+			}
+			
+			// 섹션 내 페이지 버튼 생성
+			for(int i = firstPage;i <= lastPage; i++) {
+				if(i == page) {
+					paging += "<strong>" + i + "</strong>";
+				} else {
+					paging += "<a href='board.do?page=" + i + "'>" + i + "</a>";
+				}
+			}
+			
+			// 마지막 섹션이 아니라면 다음 버튼 생성
+			if(currentSection != allSection) {
+				paging += "<a href='board.do?page=" + nextPage + "'>다음</a>";
+			}
+			
+			// 마지막 페이지가 아니라면 끝 버튼 생성
+			if(page != allPage) {
+				paging += "<a href='board.do?page=" + allPage + "'>끝</a>";
+			}
+			
+			// 페이징 끝
+			paging += "</div>";
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(rs != null) rs.close();
+				if(pstmt != null) pstmt.close();
+				if(conn != null) conn.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		
+		return paging;
+		
+	}
+	
+	public ArrayList<BDto> bList(int pageNum) {
 		
 		ArrayList<BDto> dtos = new ArrayList<BDto>();
 		
@@ -253,9 +365,14 @@ public class Dao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
+		int page = pageNum;
+		int onePage = Dao.onePage;	// 한 페이지에 보여줄 게시글의 수
+		int currentLimit = (onePage * page) - onePage;	// 몇 번째 글부터 가져오는지
+		String sqlLimit = " LIMIT " + currentLimit + ", " + onePage;
+		
 		try {
 			conn = datasource.getConnection();
-			String sql = "SELECT * FROM board ORDER BY bIDX DESC";
+			String sql = "SELECT * FROM board ORDER BY bIDX DESC" + sqlLimit;
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			
@@ -504,6 +621,5 @@ public class Dao {
 		
 		return re;
 	}
-	
 	
 }

@@ -82,6 +82,20 @@
 	overflow: hidden;
 	white-space: nowrap;
 }
+.list a{
+	color: #000000;
+}
+.paging{
+	text-align: center;
+}
+.paging strong{
+	padding-left: 4px;
+	margin-right: 10px;
+}
+.paging a{
+	padding-left: 4px;
+	margin-right: 10px;
+}
 
 
 /* footer */
