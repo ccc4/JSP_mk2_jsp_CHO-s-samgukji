@@ -89,7 +89,7 @@
 					<table class="table" style="table-layout:fixed; word-break:break-all;">
 						<tr>
 							<td>
-								<input type="text" name="bTitle" value="${bModify_view.bTitle }" size="180" maxlength="30">
+								<input type="text" name="bTitle" value="${bModify_view.bTitle }" size="180" maxlength="255">
 							</td>
 						</tr>
 						<tr>

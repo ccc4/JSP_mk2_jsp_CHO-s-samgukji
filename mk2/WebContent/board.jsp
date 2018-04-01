@@ -1,6 +1,9 @@
+<%@page import="java.sql.Date"%>
+<%@page import="java.sql.Timestamp"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ko">
 <head>
@@ -115,20 +118,36 @@
 			<table class="table table-striped" style="table-layout:fixed; word-break:break-all;">
 				<thead>
 					<tr>
-						<th width="30" style="background-color: #eeeeee; text-align: center;">번호</th>
-						<th width="350" style="background-color: #eeeeee; text-align: center;">제목</th>
-						<th width="60" style="background-color: #eeeeee; text-align: center;">글쓴이</th>
-						<th width="100" style="background-color: #eeeeee; text-align: center;">날짜</th>
-						<th width="40" style="background-color: #eeeeee; text-align: center;">조회</th>
+						<th width="35px" style="background-color: #eeeeee; text-align: center;">번호</th>
+						<th width="400px" style="background-color: #eeeeee; text-align: center;">제목</th>
+						<th width="100px" style="background-color: #eeeeee; text-align: center;">글쓴이</th>
+						<th width="35px" style="background-color: #eeeeee; text-align: center;">날짜</th>
+						<th width="35px" style="background-color: #eeeeee; text-align: center;">조회</th>
 					</tr>
 				</thead>
 				<tbody>
+					<c:set var="toDayDate" value="<%=new java.util.Date() %>"></c:set>
+					<fmt:formatDate value="${toDayDate }" pattern="MM-dd" var="toDay"/>
 					<c:forEach items="${bList }" var="dto">
 					<tr>
 						<td>${dto.bIDX }</td>
 						<td class="list"><a href="bContent_view.do?bIDX=${dto.bIDX }">${dto.bTitle }</a></td>
 						<td>${dto.bNickname }</td>
-						<td>${dto.bDate }</td>
+						<%-- <td>${dto.bDate }</td> --%>
+						
+						<td>
+							<fmt:formatDate value="${dto.bDate }" pattern="MM-dd" var="date"/>
+							<fmt:formatDate value="${dto.bDate }" pattern="HH:mm" var="time"/>
+							<c:choose>
+								<c:when test="${date == toDay }">
+									<c:out value="${time }"></c:out>
+								</c:when>
+								<c:otherwise>
+									<c:out value="${date }"></c:out>
+								</c:otherwise>
+							</c:choose>
+						</td>
+						
 						<td>${dto.bHit }</td>
 					</tr>
 					</c:forEach>
