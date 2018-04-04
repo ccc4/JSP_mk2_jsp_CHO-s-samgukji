@@ -84,27 +84,25 @@
 		<div>
 			<!-- 게시글 수정 -->
 			<div class="container">
-				<form action="bModify.do" method="post" name="write_frm">
-					<input type="hidden" name="bIDX" value="${bModify_view.bIDX }">
-					<table class="table" style="table-layout:fixed; word-break:break-all;">
-						<tr>
-							<td>
-								<input type="text" name="bTitle" value="${bModify_view.bTitle }" size="180" maxlength="255">
-							</td>
-						</tr>
-						<tr>
-							<td>
-								글쓴이 : ${bModify_view.bNickname } &nbsp; 
-								등록일 : ${bModify_view.bDate } &nbsp; 
-								조회수 : ${bModify_view.bHit }
-							</td>
-						</tr>
-						<tr>
-							<td height="300">
-								<textarea rows="13" cols="180" name="bContent" maxlength="1000">${bModify_view.bContent }</textarea>
-							</td>
-						</tr>
-					</table>
+				<form class="form-horizontal" action="bModify.do" method="post" name="write_frm">
+				<input type="hidden" name="bIDX" value="${bModify_view.bIDX }">
+					<div class="form-group">
+						<div class="col-md-12">
+							<input class="form-control" type="text" name="bTitle" value="${bModify_view.bTitle }" maxlength="255">
+						</div>
+					</div>
+					<div>
+						<p>
+							글쓴이 : ${bModify_view.bNickname } &nbsp;
+							등록일 : ${bModify_view.bDate } &nbsp;
+							조회수 : ${bModify_view.bHit }
+						</p>
+					</div>
+					<div class="form-group">
+						<div class="col-md-12">
+							<textarea class="form-control" rows="13" name="bContent" maxlength="1000">${bModify_view.bContent }</textarea>
+						</div>
+					</div>
 					<input type="button" class="btn btn-success pull-left" 
 						value="목록" onclick="location.href='board.do'">
 					<input type="button" class="btn btn-primary pull-right" 

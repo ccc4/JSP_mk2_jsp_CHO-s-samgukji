@@ -89,18 +89,18 @@
 	<div>
 		<!-- 게시글 작성 -->
 		<div class="container">
-			<form action="bWrite.do" method="post" name="write_frm">
-				<input type="hidden" name="userNickname" value="${sessionScope.sessionNickname }">
-				<table class="table" style="table-layout:fixed; word-break:break-all;">
-					<tr>
-						<td width="50">제목</td>
-						<td><input type="text" name="bTitle" size="170" maxlength="255"></td>
-					</tr>
-					<tr>
-						<td>내용</td>
-						<td><textarea rows="13" cols="170" name="bContent" maxlength="1000"></textarea></td>
-					</tr>
-				</table>
+			<form class="form-horizontal" action="bWrite.do" name="write_frm" method="post" >
+			<input type="hidden" name="userNickname" value="${sessionScope.sessionNickname }">
+				<div class="form-group">
+					<div class="col-md-12">
+						<input class="form-control" type="text" name="bTitle" placeholder="제목" maxlength="255">
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-md-12">
+						<textarea class="form-control" rows="13" name="bContent" placeholder="내용" maxlength="1000"></textarea>
+					</div>
+				</div>
 				<input type="button" class="btn btn-success pull-left" value="목록" onclick="location.href='board.do'">
 				<input type="button" class="btn btn-primary pull-right" value="작성" onclick="writeConfirm()">
 			</form>
