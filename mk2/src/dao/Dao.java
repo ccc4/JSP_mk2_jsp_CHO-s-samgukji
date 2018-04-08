@@ -376,7 +376,7 @@ public class Dao {
 				int bIDX = rs.getInt("bIDX");
 				int bUserIDX = rs.getInt("bUserIDX");
 				String bNickname = rs.getString("bNickname");
-				String bTitle = rs.getString("bTitle");
+				String bTitle = rs.getString("bTitle").replaceAll(" ", "&nbsp;").replaceAll("<",  "&lt;").replaceAll(">", "&gt;").replaceAll("\n", "<br>");
 				Timestamp bDate = rs.getTimestamp("bDate");
 				int bHit = rs.getInt("bHit");
 				
@@ -456,8 +456,8 @@ public class Dao {
 				int bIDX = rs.getInt("bIDX");
 				int bUserIDX = rs.getInt("bUserIDX");
 				String bNickname = rs.getString("bNickname");
-				String bTitle = rs.getString("bTitle");
-				String bContent = rs.getString("bContent");
+				String bTitle = rs.getString("bTitle").replaceAll(" ", "&nbsp;").replaceAll("<",  "&lt;").replaceAll(">", "&gt;").replaceAll("\n", "<br>");
+				String bContent = rs.getString("bContent").replaceAll(" ", "&nbsp;").replaceAll("<",  "&lt;").replaceAll(">", "&gt;").replaceAll("\n", "<br>");
 				Timestamp bDate = rs.getTimestamp("bDate");
 				int bHit = rs.getInt("bHit");
 				

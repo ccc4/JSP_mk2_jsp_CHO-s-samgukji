@@ -55,6 +55,15 @@ function joinConfirm() {
 		return false;
 	}
 	
+	for (i = 0; i < form.userPassword.value.length; i++) {
+        ch = form.userPassword.value.charAt(i)
+        if (ch == ' ') {
+            alert("비밀번호에 띄어쓰기는 입력 불가능합니다.")
+            form.userPassword.focus()
+            return false;
+        }
+    }
+	
 	if(form.userPassword.value !== form.uPW_check.value) {
 		alert("비밀번호재입력을 확인해주세요.");
 		form.uPW_check.focus();
@@ -79,6 +88,15 @@ function joinConfirm() {
 		return false;
 	}
 	
+	for (i = 0; i < form.userName.value.length; i++) {
+        ch = form.userName.value.charAt(i)
+        if (!(ch >= '가' && ch <= '힣')) {
+            alert("이름을 제대로 입력해주세요.")
+            form.userName.focus()
+            return false;
+        }
+    }
+	
 	if(!form.userNickname.value) {
 		alert("별명을 입력해주세요.");
 		form.userNickname.focus();
@@ -90,6 +108,15 @@ function joinConfirm() {
 		form.userNickname.focus();
 		return false;
 	}
+	
+	for (i = 0; i < form.userNickname.value.length; i++) {
+        ch = form.userNickname.value.charAt(i)
+        if (!(ch >= '0' && ch <= '9') && !(ch >= 'a' && ch <= 'z') && !(ch >= 'A' && ch <= 'Z') && !(ch >= '가' && ch <= '힣')) {
+            alert("별명은 대소문자, 한글, 숫자만 입력가능합니다.")
+            form.userNickname.focus()
+            return false;
+        }
+    }
 	
 	if(!form.userPhone1.value) {
 		alert("연락처를 입력해주세요.");
@@ -163,6 +190,15 @@ function modifyConfirm() {
 		return false;
 	}
 	
+	for (i = 0; i < form.userPassword.value.length; i++) {
+        ch = form.userPassword.value.charAt(i)
+        if (ch == ' ') {
+            alert("비밀번호에 띄어쓰기는 입력 불가능합니다.")
+            form.userPassword.focus()
+            return false;
+        }
+    }
+	
 	if(form.userPassword.value !== form.uPW_check.value) {
 		alert("비밀번호재입력을 확인해주세요.");
 		form.uPW_check.focus();
@@ -187,6 +223,15 @@ function modifyConfirm() {
 		return false;
 	}
 	
+	for (i = 0; i < form.userName.value.length; i++) {
+        ch = form.userName.value.charAt(i)
+        if (!(ch >= '가' && ch <= '힣')) {
+            alert("이름을 제대로 입력해주세요.")
+            form.userName.focus()
+            return false;
+        }
+    }
+	
 	if(!form.userNickname.value) {
 		alert("별명을 입력해주세요.");
 		form.userNickname.focus();
@@ -198,6 +243,15 @@ function modifyConfirm() {
 		form.userNickname.focus();
 		return false;
 	}
+	
+	for (i = 0; i < form.userNickname.value.length; i++) {
+        ch = form.userNickname.value.charAt(i)
+        if (!(ch >= '0' && ch <= '9') && !(ch >= 'a' && ch <= 'z') && !(ch >= 'A' && ch <= 'Z') && !(ch >= '가' && ch <= '힣')) {
+            alert("별명은 대소문자, 한글, 숫자만 입력가능합니다.")
+            form.userNickname.focus()
+            return false;
+        }
+    }
 	
 	if(!form.userPhone1.value) {
 		alert("연락처를 입력해주세요.");
