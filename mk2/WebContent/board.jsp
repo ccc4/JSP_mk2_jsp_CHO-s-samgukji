@@ -153,7 +153,7 @@
 					</c:forEach>
 				</tbody>
 			</table>
-			${requestScope.paging }
+			<div class="paging">${requestScope.paging }</div>
 			<input type="button" class="btn btn-primary pull-right" value="글작성" onclick="location.href='bCheckWrite.jsp'">
 		</div>
 		<!-- 게시판 끝 -->

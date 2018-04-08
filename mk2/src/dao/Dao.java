@@ -257,6 +257,7 @@ public class Dao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
+		// 페이징 저장할 변수
 		String paging = "";
 		
 		int page = pageNum;
@@ -266,12 +267,12 @@ public class Dao {
 		int oneSection = Dao.oneSection;
 		
 		try {
+			// 전체 게시글 수
 			conn = datasource.getConnection();
 			String sql = "SELECT count(*) AS cnt FROM board";
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			
-			// 전체 게시글 수
 			int allPost = 0;
 			while(rs.next()) {
 				allPost = rs.getInt("cnt");				
@@ -306,9 +307,7 @@ public class Dao {
 			//다음 페이지
 			int nextPage = ((currentSection + 1) * oneSection) - (oneSection -1);
 			
-			// 페이징 저장할 변수
-			paging += "<div class=\"paging\">";
-			
+// paging 코드
 			// 첫 페이지가 아니라면 처음 버튼 생성
 			if(page != 1) {
 				paging += "<a href='board.do?page=1'>처음</a>";
@@ -337,9 +336,6 @@ public class Dao {
 			if(page != allPage) {
 				paging += "<a href='board.do?page=" + allPage + "'>끝</a>";
 			}
-			
-			// 페이징 끝
-			paging += "</div>";
 			
 		} catch (Exception e) {
 			e.printStackTrace();

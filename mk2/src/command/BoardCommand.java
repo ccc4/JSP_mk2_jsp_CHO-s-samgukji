@@ -13,7 +13,7 @@ public class BoardCommand implements Command {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 
-		int pageNum = 1;
+		int pageNum = 0;
 		if(request.getParameter("page") == null) {
 			pageNum = 1;
 		} else {
