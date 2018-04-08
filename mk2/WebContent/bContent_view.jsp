@@ -124,12 +124,13 @@
 					</tr>
 				</tbody>
 			</table>
-			<input type="button" class="btn btn-success pull-left"
-				value="목록" onclick="location.href='board.do'">
-			<input type="button" class="btn btn-primary pull-right" 
-				value="삭제" onclick="location.href='bCheckDelete.jsp?bUserIDX=${bContentView.bUserIDX }&bIDX=${bContentView.bIDX }'">
-			<input type="button" class="btn btn-primary pull-right"
-				value="수정" onclick="location.href='bCheckModify.jsp?bUserIDX=${bContentView.bUserIDX }&bIDX=${bContentView.bIDX }'">
+			<input type="button" class="btn btn-success pull-left" value="목록" onclick="location.href='board.do'">
+			<c:choose>
+				<c:when test="${!empty sessionIDX && sessionIDX == bContentView.bUserIDX }">
+					<input type="button" class="btn btn-primary pull-right" value="삭제" onclick="location.href='bCheckDelete.jsp?bUserIDX=${bContentView.bUserIDX }&bIDX=${bContentView.bIDX }'">
+					<input type="button" class="btn btn-primary pull-right" value="수정" onclick="location.href='bCheckModify.jsp?bUserIDX=${bContentView.bUserIDX }&bIDX=${bContentView.bIDX }'">
+				</c:when>
+			</c:choose>
 		</div>
 		<!-- 게시글 보기 끝 -->
 	</div>
