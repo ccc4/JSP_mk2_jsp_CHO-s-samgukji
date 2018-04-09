@@ -269,8 +269,9 @@ public class Dao {
 		try {
 			// 전체 게시글 수
 			conn = datasource.getConnection();
-			String sql = "SELECT count(*) AS cnt FROM board";
+			String sql = "SELECT count(*) AS cnt FROM board WHERE bAvailable = ?";
 			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, 1);
 			rs = pstmt.executeQuery();
 			
 			int allPost = 0;
@@ -368,8 +369,9 @@ public class Dao {
 		
 		try {
 			conn = datasource.getConnection();
-			String sql = "SELECT * FROM board ORDER BY bIDX DESC" + sqlLimit;
+			String sql = "SELECT * FROM board WHERE bAvailable = ? ORDER BY bIDX DESC" + sqlLimit;
 			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, 1);
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
@@ -447,9 +449,10 @@ public class Dao {
 		
 		try {
 			conn = datasource.getConnection();
-			String sql = "SELECT * FROM board WHERE bIDX = ?";
+			String sql = "SELECT * FROM board WHERE bIDX = ? AND bAvailable = ?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, idx);
+			pstmt.setInt(2, 1);
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
@@ -486,9 +489,10 @@ public class Dao {
 		
 		try {
 			conn = datasource.getConnection();
-			String sql = "UPDATE board SET bHit = bHit + 1 WHERE bIDX = ?";
+			String sql = "UPDATE board SET bHit = bHit + 1 WHERE bIDX = ? AND bAvailable = ?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, idx);
+			pstmt.setInt(2, 1);
 			int check = pstmt.executeUpdate();
 			
 		} catch (Exception e) {
@@ -514,9 +518,10 @@ public class Dao {
 		
 		try {
 			conn = datasource.getConnection();
-			String sql = "SELECT * FROM board WHERE bIDX = ?";
+			String sql = "SELECT * FROM board WHERE bIDX = ? AND bAvailable = ?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, idx);
+			pstmt.setInt(2, 1);
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
@@ -555,12 +560,13 @@ public class Dao {
 		
 		try {
 			conn = datasource.getConnection();
-			String sql = "UPDATE board SET bTitle = ?, bContent = ? WHERE bIDX = ? AND bUserIDX = ?";
+			String sql = "UPDATE board SET bTitle = ?, bContent = ? WHERE bIDX = ? AND bUserIDX = ? AND bAvailable = ?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, title);
 			pstmt.setString(2, content);
 			pstmt.setString(3, idx);
 			pstmt.setInt(4, sessionIDX);
+			pstmt.setInt(5, 1);
 			int check = pstmt.executeUpdate();
 			
 			if(check == 0) {
@@ -592,10 +598,11 @@ public class Dao {
 		
 		try {
 			conn = datasource.getConnection();
-			String sql = "DELETE FROM board WHERE bIDX = ? AND buserIDX = ?";
+			String sql = "UPDATE board SET bAvailable = ? WHERE bIDX = ? AND bUserIDX = ?";
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, idx);
-			pstmt.setString(2, userIDX);
+			pstmt.setInt(1, 0);
+			pstmt.setString(2, idx);
+			pstmt.setString(3, userIDX);
 			int check = pstmt.executeUpdate();
 			
 			if(check == 0) {
