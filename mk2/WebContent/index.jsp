@@ -7,10 +7,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>슈미뽐</title>
+<title>CHO's SAMGUKJI</title>
+<link rel="shortcut icon" href="images/titleicon.ico" type="x-icon">
 
 <link href="css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" href="./css/syumibbom.css">
+<link rel="stylesheet" href="./css/samgukji.css">
 </head>
 <body data-spy="scroll" data-target="#main-jumbotron">
 
@@ -27,7 +28,7 @@
 				<span class="icon-bar"></span> 
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="index.jsp">SYUMIBBOM</a>
+			<a class="navbar-brand" href="index.jsp">CHO's SAMGUKJI</a>
 		</div>
 		<!-- 타이틀 및 줄였을 때 목록바 끝 -->
 
@@ -48,8 +49,8 @@
 				</li>
 				<li><a href="board.do">게시판</a></li>
 				<li>
-					<a href="https://www.instagram.com/syumibbom/" style="padding-top: 9px; padding-bottom: 9px;">
-						<img src="images/instagramicon.ico" alt="인스타그램">
+					<a href="https://namu.wiki/w/삼국지" style="padding-top: 9px; padding-bottom: 9px;">
+						<img src="images/namuicon.ico" alt="namuwikiicon" style="width: 32px; height: 32px;">
 					</a>
 				</li>
 			</ul>
@@ -96,11 +97,11 @@
 	<div>
 		<!-- jumbotron -->
 		<div class="container" id="main-jumbotron">
-			<div class="jumbotron" style="background-image: url('images/jumbotron-back.jpg');">
-				<h1 class="text-center">슈미뽐을 소개합니다.</h1>
-				<p class="text-center">여기 세 요정들은 고양이나라에서 인간들의 심장을 헤롭게 하기위해 파견되어	왔습니다.</p>
+			<div class="jumbotron" style="background-image: url('images/background2.jpg');">
+				<h2 class="text-center">삼국지의 세 영웅을 소개합니다.</h2>
+				<p class="text-center">여기 세 인물은 고전 명작 삼국지의 영웅들이자 저작권 문제도 없습니다.</p>
 				<p class="text-center">
-					<a class="btn btn-primary btn-lg" href="#introduce" role="button">슈미뽐이란?&raquo;</a>
+					<a class="btn btn-primary btn-lg" href="#introduce" role="button">사진보기&raquo;</a>
 				</p>
 			</div>
 		</div>
@@ -117,13 +118,13 @@
 				</ol>
 				<div class="carousel-inner">
 					<div class="item active">
-						<img class="first-slide" src="images/a.jpg" alt="첫번째 슬라이드 슈야">
+						<img class="first-slide" src="images/유비가로.jpg" alt="첫번째 슬라이드 유비">
 					</div>
 					<div class="item">
-						<img class="second-slide" src="images/b.jpg" alt="두번째 슬라이드 미야">
+						<img class="second-slide" src="images/장비가로.jpg" alt="두번째 슬라이드 장비">
 					</div>
 					<div class="item">
-						<img class="third-slide" src="images/c.jpg" alt="세번째 슬라이드 봄이">
+						<img class="third-slide" src="images/관우가로.jpg" alt="세번째 슬라이드 관우">
 					</div>
 				</div>
 				<a class="left carousel-control" href="#mainCarousel" role="button" data-slide="prev"> <span
@@ -142,38 +143,35 @@
 		<div class="container marketing">
 			<div class="row">
 				<div class="col-lg-4">
-					<img class="img-circle" src="images/슈야얼굴.jpg" alt="슈야얼굴"
+					<img class="img-circle" src="images/유비사진.jpg" alt="유비사진"
 						width="140" height="140">
 					<h2>
-						슈야 <span style="font-size: 13px">2월1일생</span>
+						유비 <!-- <span style="font-size: 13px">161년 6월 7일 ~ 223년 4월 23일</span> -->
 					</h2>
 					<p>
-						노랗게 잘 익은 털 색깔을 가진 스코티쉬폴드 <br>송곳니가 무척 길어서 가끔 바보같은 표정이 되기도<br>
-						하지만 그게 매력. 창밖 구경을 제일 좋아한다.
+						맨주먹과 인의만으로 일어나 최고의 자리까지 오른 난세의 영웅.
 					</p>
 				</div>
 
 				<div class="col-lg-4">
-					<img class="img-circle" src="images/미야얼굴.jpg" alt="미야얼굴"
+					<img class="img-circle" src="images/장비사진.jpg" alt="장비사진"
 						width="140" height="140">
 					<h2>
-						미야 <span style="font-size: 13px">8월15일생</span>
+						장비
 					</h2>
 					<p>
-						귀족같은 털을 가진 페르시안이지만 다리가 통통하니 <br>짧은걸로 봐선 먼치킨의 피도 섞여있는것 같다. 집에서
-						<br> 제일 이쁨을 받아 가끔 슈야 봄이가 질투를 하는게 <br>느껴진다.
+						후한 말과 삼국시대 촉나라의 인물. 유비 휘하의 장수. 자는 익덕(益德). 탁군 사람.
 					</p>
 				</div>
 
 				<div class="col-lg-4">
-					<img class="img-circle" src="images/봄이얼굴.jpg" alt="봄이얼굴"
+					<img class="img-circle" src="images/관우사진.jpg" alt="관우사진"
 						width="140" height="140">
 					<h2>
-						봄이 <span style="font-size: 13px">11월1일생</span>
+						관우
 					</h2>
 					<p>
-						제일 막내 까만 브리티쉬 숏헤어... <br>이지만 커갈수록 아닌거같다. 어릴땐 눈이 되게 <br>
-						앙칼졌지만 커가면서 동글동글해지며 갈수록 <br>귀여워진다. 공주님답게 옷장을 좋아한다.
+						후한 말의 인물. 유비 휘하의 무장. 자는 운장(雲長), 본래 자는 장생(長生). 하동군 해현 사람.
 					</p>
 				</div>
 			</div>
@@ -185,7 +183,7 @@
 
 	<footer class="footer">
 		<div class="container">
-			<p class="text-muted">Copyright &copy; SYUMIBBOM</p>
+			<p class="text-muted">Copyright &copy; CHO's SAMGUKJI</p>
 		</div>
 	</footer>
 
