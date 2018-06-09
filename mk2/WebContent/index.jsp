@@ -20,7 +20,7 @@
 	<nav class="navbar navbar-inverse">
 	<div class="container">
 	
-		<!-- 삼국지bgm -->
+		<!-- bgm -->
 		<div style="color: black;">
 			<audio style="width:220px;height:25px" src="bgm/삼국지 공명전 OST - Track 7.mp3" preload="none" controls="controls" autoplay="" loop=""> 
 				Your browser does not support the audio element. Please download and listen on an external player. 
