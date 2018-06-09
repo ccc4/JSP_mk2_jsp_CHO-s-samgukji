@@ -20,7 +20,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>슈미뽐</title>
+<title>CHO's SAMGUKJI</title>
+<link rel="shortcut icon" href="images/titleicon.ico" type="x-icon">
 </head>
 <body>
 

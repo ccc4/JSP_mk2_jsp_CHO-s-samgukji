@@ -7,10 +7,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>슈미뽐</title>
+
+<title>CHO's SAMGUKJI</title>
+<link rel="shortcut icon" href="images/titleicon.ico" type="x-icon">
 
 <link href="css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" href="./css/syumibbom.css">
+<link rel="stylesheet" href="./css/samgukji.css">
 </head>
 <body>
 
@@ -57,8 +59,8 @@
 				</li>
 				<li><a href="board.do">게시판</a></li>
 				<li>
-					<a href="https://www.instagram.com/syumibbom/" style="padding-top: 9px; padding-bottom: 9px;">
-						<img src="images/instagramicon.ico" alt="인스타그램">
+					<a href="https://namu.wiki/w/삼국지" style="padding-top: 9px; padding-bottom: 9px;">
+						<img src="images/namuicon.ico" alt="namuwikiicon" style="width: 32px; height: 32px;">
 					</a>
 				</li>
 			</ul>
@@ -149,9 +151,9 @@
 
 
 	<footer class="footer">
-	<div class="container">
-		<p class="text-muted">Copyright &copy; SYUMIBBOM</p>
-	</div>
+		<div class="container">
+			<p class="text-muted">Copyright &copy; CHO's SAMGUKJI</p>
+		</div>
 	</footer>
 
 
