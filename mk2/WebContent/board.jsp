@@ -47,7 +47,7 @@
 				<span class="icon-bar"></span> 
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="index.jsp">SYUMIBBOM</a>
+			<a class="navbar-brand" href="index.jsp">CHO's SAMGUKJI</a>
 		</div>
 		<!-- 타이틀 및 줄였을 때 목록바 끝 -->
 
