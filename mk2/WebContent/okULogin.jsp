@@ -13,15 +13,17 @@
 	<c:when test="${okULogin == '0' }">
 		<script type="text/javascript">
 			alert("아이디 또는 비밀번호가 다릅니다.");
-			history.back();
-			location.reload(); 
+			/* history.back();
+			location.reload();  */
+			location.href = "uLogin.jsp";
 		</script>
 	</c:when>
 	<c:when test="${okULogin == '-1' }">
 		<script type="text/javascript">
 			alert("아이디가 존재하지 않습니다.");
-			history.back();
-			location.reload(); 
+			/* history.back();
+			location.reload();  */
+			location.href = "uLogin.jsp";
 		</script>
 	</c:when>
 </c:choose>
