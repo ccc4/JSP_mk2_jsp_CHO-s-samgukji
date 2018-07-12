@@ -96,8 +96,10 @@
 					<tr>
 						<td width="150">아이디</td>
 						<td>
-							<input type="text" name="userID" maxlength="12">
-							<input type="button" value="중복확인">
+							<input type="text" id="userID" name="userID" maxlength="12">
+							<input type="button" id="userIDbtn" value="중복확인" onclick="uJoinCheckID()">
+							<span id="userIDspan"></span>
+							<input type="hidden" id="idUnCheck" value="unCheck">
 						</td>
 					</tr>
 					<tr>
@@ -114,7 +116,11 @@
 					</tr>
 					<tr>
 						<td>별명</td>
-						<td><input type="text" name="userNickname" maxlength="8"></td>
+						<td>
+							<input type="text" id="userNickname" name="userNickname" maxlength="8">
+							<input type="button" value="중복확인" onclick="uJoinCheckNickname()">
+							<input type="hidden" id="nicknameUnCheck" value="unCheck">
+						</td>
 					</tr>
 					<tr>
 						<td>성별</td>

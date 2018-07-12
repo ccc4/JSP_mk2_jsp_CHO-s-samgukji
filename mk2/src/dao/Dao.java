@@ -39,7 +39,7 @@ public class Dao {
 	
 //	회원정보 DAO
 	
-	public int ujoin(String id, String pw, String name, String nickname, int gender, int phone1, int phone2,
+	public int uJoin(String id, String pw, String name, String nickname, int gender, int phone1, int phone2,
 			String email1, String email2, String address) {
 		
 		int re = 0;
@@ -83,7 +83,7 @@ public class Dao {
 		return re;
 	}
 	
-	public int ulogin(String id, String pw) {
+	public int uLogin(String id, String pw) {
 
 		int re = 0;
 		
@@ -239,6 +239,78 @@ public class Dao {
 			e.printStackTrace();
 		} finally {
 			try {
+				if(pstmt != null) pstmt.close();
+				if(conn != null) conn.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		
+		return re;
+	}
+	
+	public int uJoinCheckID(String id) {
+		
+		int re = 0;
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = datasource.getConnection();
+			String sql = "SELECT userID FROM user WHERE userID = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				re = 0; // 중복 ID 존재
+			} else {
+				re = 1; // 중복 ID 존재 x 화원가입 가능
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(rs != null) rs.close();
+				if(pstmt != null) pstmt.close();
+				if(conn != null) conn.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		
+		return re;
+	}
+	
+	public int uJoinCheckNickname(String nickname) {
+
+		int re = 0;
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = datasource.getConnection();
+			String sql = "SELECT userNickname FROM user WHERE userNickname = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, nickname);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				re = 0; // 중복 Nickname 존재
+			} else {
+				re = 1; // 중복 Nickname 존재 x 화원가입 가능
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(rs != null) rs.close();
 				if(pstmt != null) pstmt.close();
 				if(conn != null) conn.close();
 			} catch (Exception e2) {

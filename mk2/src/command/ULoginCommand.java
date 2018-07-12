@@ -15,7 +15,7 @@ public class ULoginCommand implements Command {
 		String pw = request.getParameter("userPassword");
 		
 		Dao dao = Dao.getInstance();
-		int result = dao.ulogin(id, pw);
+		int result = dao.uLogin(id, pw);
 		System.out.println(result);
 		
 		if(result == 1) {

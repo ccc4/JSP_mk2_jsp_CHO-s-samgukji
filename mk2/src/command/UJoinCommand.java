@@ -22,7 +22,7 @@ public class UJoinCommand implements Command {
 		String address = request.getParameter("userAddress");
 		
 		Dao dao = Dao.getInstance();
-		int result = dao.ujoin(id, pw, name, nickname, gender, phone1, phone2, email1, email2, address);
+		int result = dao.uJoin(id, pw, name, nickname, gender, phone1, phone2, email1, email2, address);
 		System.out.println(result);
 		
 		if(result == 1) {
