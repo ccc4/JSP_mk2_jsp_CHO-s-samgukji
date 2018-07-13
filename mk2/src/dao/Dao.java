@@ -265,9 +265,9 @@ public class Dao {
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
-				re = 0; // 중복 ID 존재
+				re = 1; // 중복 ID 존재
 			} else {
-				re = 1; // 중복 ID 존재 x 화원가입 가능
+				re = 0; // 중복 ID 존재 x 화원가입 가능
 			}
 			
 		} catch (Exception e) {
@@ -301,9 +301,9 @@ public class Dao {
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
-				re = 0; // 중복 Nickname 존재
+				re = 1; // 중복 Nickname 존재
 			} else {
-				re = 1; // 중복 Nickname 존재 x 화원가입 가능
+				re = 0; // 중복 Nickname 존재 x 화원가입 가능
 			}
 			
 		} catch (Exception e) {

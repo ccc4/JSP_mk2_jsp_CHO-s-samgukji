@@ -96,10 +96,10 @@
 					<tr>
 						<td width="150">아이디</td>
 						<td>
-							<input type="text" id="userID" name="userID" maxlength="12">
-							<input type="button" id="userIDbtn" value="중복확인" onclick="uJoinCheckID()">
-							<span id="userIDspan"></span>
-							<input type="hidden" id="idUnCheck" value="unCheck">
+							<input type="text" id="userID" name="userID" maxlength="12" onkeyup="checkIDOnKeyUp()">
+							<input type="hidden" id="hiddenID" value="unCheck">
+							<input type="button" id="userIDBtn" value="중복확인" onclick="uJoinCheckID()">
+							<span id="userIDSpan"></span>
 						</td>
 					</tr>
 					<tr>
@@ -117,9 +117,10 @@
 					<tr>
 						<td>별명</td>
 						<td>
-							<input type="text" id="userNickname" name="userNickname" maxlength="8">
-							<input type="button" value="중복확인" onclick="uJoinCheckNickname()">
-							<input type="hidden" id="nicknameUnCheck" value="unCheck">
+							<input type="text" id="userNickname" name="userNickname" maxlength="8" onkeyup="checkNicknameOnKeyUp()">
+							<input type="hidden" id="hiddenNickname" value="unCheck">
+							<input type="button" id="userNicknameBtn" value="중복확인" onclick="uJoinCheckNickname()">
+							<span id="userNicknameSpan"></span>
 						</td>
 					</tr>
 					<tr>

@@ -49,7 +49,7 @@
 				url: './UserIDCheckServlet',
 				data: {id: id},
 				success: function(result) {
-					if(result == 1) {
+					if(result == 0) {
 						$('#span').html('사용가능').css('color', 'blue');
 						$('.checkHidden').val('check');
 					} else {
@@ -61,7 +61,7 @@
 		}
 		
 		function checkOnKeyUp(){
-			$('.checkHidden').val('unCheck');
+			$('this').next().val('unCheck'); // hidden 값 변경
 		}
 		
 		function submitBtn(){
